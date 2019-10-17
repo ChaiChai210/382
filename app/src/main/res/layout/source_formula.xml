@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_showformula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include_head"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-5.0dip"
+        android:layout_marginRight="@dimen/dp_5"
+        android:background="@drawable/bigbubble"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="(A自营业绩+B1自营业绩 + B2自营业绩。。。) =》 对应返佣系数（总体系数）"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="B1自营业绩+（旗下团队业绩）=》 对应的返佣系数（会员返佣系数）"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:text="（总体系数 - 会员返佣系数）· （B1自营业绩+旗下团队业绩） = 贡献金额"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/sp_10" />
+    </LinearLayout>
+</RelativeLayout>

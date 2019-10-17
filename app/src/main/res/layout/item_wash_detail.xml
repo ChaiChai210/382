@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/dp_30"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_allGame"
+        style="@style/ListItem"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:text="@string/game" />
+
+    <TextView
+        android:id="@+id/tv_ximaliang"
+        style="@style/ListItem"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:text="@string/xima_liang" />
+
+    <TextView
+        android:id="@+id/tv_ratio"
+        style="@style/ListItem"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:text="@string/xima_bi_li" />
+
+    <TextView
+        android:id="@+id/tv_xima_money"
+        style="@style/ListItem"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_marginStart="1.0pt"
+        android:layout_weight="1.0"
+        android:text="@string/xima_jine" />
+</LinearLayout>

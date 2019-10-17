@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_539"
+        android:layout_height="@dimen/dp_314"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/img_dialog_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_dialog_bj" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_18"
+            android:src="@drawable/ic_tx_record_title" />
+
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_alignTop="@+id/img_dialog_bg"
+            android:layout_alignEnd="@+id/img_dialog_bg"
+            android:background="@null"
+            android:src="@drawable/ic_close" />
+
+        <LinearLayout
+            android:id="@+id/ll_top"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30"
+            android:layout_alignStart="@+id/img_dialog_bg"
+            android:layout_alignEnd="@+id/img_dialog_bg"
+            android:layout_marginStart="@dimen/dp_13"
+            android:layout_marginTop="@dimen/dp_58"
+            android:layout_marginEnd="@dimen/dp_13"
+            android:background="@color/pc_bg_gray1">
+
+            <TextView
+                style="@style/ListTitle"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:text="@string/recharge_all_time" />
+
+            <TextView
+                style="@style/ListTitle"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="@dimen/dp_1"
+                android:layout_marginEnd="@dimen/dp_1"
+                android:layout_weight="1.0"
+                android:text="@string/recharge_all_status" />
+
+            <TextView
+                style="@style/ListTitle"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:text="@string/recharge_jine" />
+
+            <TextView
+                style="@style/ListTitle"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="@dimen/dp_1"
+                android:layout_weight="1.0"
+                android:text="@string/detail" />
+        </LinearLayout>
+
+        <com.colin.anbet.widget.MultipleStatusView
+            android:id="@+id/msv_drawing_history"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_top"
+            android:layout_alignStart="@+id/img_dialog_bg"
+            android:layout_alignEnd="@+id/img_dialog_bg"
+            android:layout_marginStart="@dimen/dp_13"
+            android:layout_marginEnd="@dimen/dp_13">
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/srl_drawing_history"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.colin.anbet.widget.MultipleStatusView>
+    </RelativeLayout>
+</RelativeLayout>

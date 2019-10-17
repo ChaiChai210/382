@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/et_search"
+        android:layout_alignBottom="@+id/et_search"
+        android:gravity="center_vertical"
+        android:text="@string/qipai_title"
+        android:textColor="#ffffffff"
+        android:textSize="@dimen/sp_10" />
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="@dimen/dp_128"
+        android:layout_height="@dimen/dp_21"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/dp_19"
+        android:background="@drawable/ic_search_bg"
+        android:gravity="center_vertical"
+        android:hint="@string/game_hint"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="text"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10"
+        android:textColor="#ffffffff"
+        android:textColorHint="@color/pc_gray"
+        android:textSize="@dimen/sp_12"
+        android:windowSoftInputMode="stateAlwaysHidden" />
+
+    <ImageButton
+        android:id="@+id/btn_search"
+        android:layout_width="@dimen/dp_19"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/et_search"
+        android:layout_alignEnd="@+id/et_search"
+        android:layout_alignBottom="@+id/et_search"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_search_btn" />
+</RelativeLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_539"
+        android:layout_height="@dimen/dp_314">
+
+        <ImageView
+            android:id="@+id/img_dialog_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_dialog_bj" />
+
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_alignTop="@+id/img_dialog_bg"
+            android:layout_alignEnd="@+id/img_dialog_bg"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:background="@null"
+            android:src="@drawable/ic_close" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/dp_13"
+            android:layout_marginTop="@dimen/dp_58"
+            android:layout_marginRight="@dimen/dp_13"
+            android:layout_marginBottom="@dimen/dp_13"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_48">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_top_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_alignParentBottom="true" />
+
+                <TextView
+                    android:id="@+id/tv_proxy_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="代理暂未开放"
+                    android:textColor="#ff464648"
+                    android:textSize="@dimen/sp_16"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_30"
+                android:background="@color/money_chart_bj">
+
+                <RelativeLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="代理级别"
+                        android:textColor="@color/money_font"
+                        android:textSize="@dimen/sp_14" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="@dimen/dp_1"
+                    android:layout_height="fill_parent"
+                    android:background="@color/line_money" />
+
+                <RelativeLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="团队业绩/日"
+                        android:textColor="@color/money_font"
+                        android:textSize="@dimen/sp_14" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="@dimen/dp_1"
+                    android:layout_height="fill_parent"
+                    android:background="@color/line_money" />
+
+                <RelativeLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="返回额度"
+                        android:textColor="@color/money_font"
+                        android:textSize="@dimen/sp_14" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                    android:id="@+id/srl_dialog_msg"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_above="@+id/tv_remake">
+
+                    <com.chai.colin.widget.MultipleStatusView
+                        android:id="@+id/msv_dialog_msg"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_content"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent" />
+                    </com.chai.colin.widget.MultipleStatusView>
+                </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+                <TextView
+                    android:id="@+id/tv_remake"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_28"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="注：上表如1-2万，业绩为0-19999不含2万，以此类推。"
+                    android:textColor="#ff8c7353"
+                    android:textSize="@dimen/sp_10" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

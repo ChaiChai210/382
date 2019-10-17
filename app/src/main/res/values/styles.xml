@@ -1,0 +1,104 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="windowNoTitle">true</item>-->
+        <item name="android:windowBackground">@drawable/splash_water</item>
+    </style>
+    <style name="MobileDialog" parent="@style/Theme.AppCompat.DayNight">
+        <item name="android:screenOrientation">nosensor</item>
+        <item name="android:configChanges">keyboardHidden|orientation</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:clickable">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">adjustPan|stateHidden</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+    <style name="TextAmountYellow">
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:textColor">@color/pc_text</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="qipai_list">
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">1.0</item>
+    </style>
+    <style name="promotion_list">
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:button">@null</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">1.0</item>
+    </style>
+    <style name="MultipleStatusView" />
+    <style name="MultipleStatusView.Content" parent="@style/MultipleStatusView">
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:textColor">#ff464648</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp_15</item>
+    </style>
+    <style name="ListItem">
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:textColor">@color/item_tv_gray</item>
+        <item name="android:gravity">center</item>
+    </style>
+     <style name="ListTitle">
+        <item name="android:textSize">@dimen/sp_11</item>
+        <item name="android:textColor">@color/pc_golden</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/pc_golden_bg</item>
+    </style>
+    <style name="TextTypeRed">
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:textColor">@color/color_status_back_money</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="TextTypeYellow">
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:textColor">@color/color_status_out_mony</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="TextTypeGreen">
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:textColor">@color/color_status_success</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--MultipleStatusView-->
+    <declare-styleable name="MultipleStatusView">
+        <!--加载页面-->
+        <attr name="msv_loadingView" format="reference" />
+        <!--错误页面-->
+        <attr name="msv_errorView" format="reference" />
+        <!--空页面-->
+        <attr name="msv_emptyView" format="reference" />
+        <!--没有网络的页面-->
+        <attr name="msv_noNetworkView" format="reference" />
+        <!--主内容页面-->
+        <attr name="msv_contentView" format="reference" />
+    </declare-styleable>
+    <attr name="MultipleStatusViewStyle" format="reference" />
+</resources>

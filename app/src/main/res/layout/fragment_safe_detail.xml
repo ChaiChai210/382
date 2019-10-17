@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/ic_mingxibg">
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_30"
+        android:background="@drawable/round_top_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/time"
+            android:textColor="#ffffffb7"
+            android:textSize="@dimen/sp_12" />
+
+        <View
+            android:layout_width="@dimen/dp_0_5"
+            android:layout_height="fill_parent"
+            android:background="#ff17171a" />
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/description"
+            android:textColor="#ffffffb7"
+            android:textSize="@dimen/sp_12" />
+
+        <View
+            android:layout_width="@dimen/dp_0_5"
+            android:layout_height="fill_parent"
+            android:background="#ff17171a" />
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/recharge_jine"
+            android:textColor="#ffffffb7"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smart_refresh_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_bottom"
+        android:layout_below="@+id/ll_top"
+        app:srlEnableAutoLoadMore="true"
+        app:srlEnableLoadMore="true"
+        app:srlEnableRefresh="true">
+
+        <com.colin.anbet.widget.MultipleStatusView
+            android:id="@+id/msv_safe_box"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </com.colin.anbet.widget.MultipleStatusView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_30"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/ic_mingxi_bottom"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_20"
+        android:paddingEnd="@dimen/dp_15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/clearn_detail"
+            android:textColor="#ff656467"
+            android:textSize="@dimen/sp_14"
+            android:visibility="invisible" />
+
+        <View
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" />
+
+        <ImageButton
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_31"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_page_up"
+            android:visibility="invisible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_15"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:gravity="center"
+            android:text="1/1"
+            android:textColor="#ff656467"
+            android:textSize="@dimen/sp_14"
+            android:visibility="invisible" />
+
+        <ImageButton
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_31"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_page_down"
+            android:visibility="invisible" />
+    </LinearLayout>
+</RelativeLayout>

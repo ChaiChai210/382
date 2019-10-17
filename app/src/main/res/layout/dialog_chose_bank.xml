@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_539"
+        android:layout_height="@dimen/dp_314"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@id/img_dialog_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_dialog_bj" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_22"
+            android:src="@drawable/ic_setting_title" />
+
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_alignTop="@id/img_dialog_bg"
+            android:layout_alignEnd="@id/img_dialog_bg"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:background="@null"
+            android:src="@drawable/ic_close" />
+
+        <View
+            android:id="@+id/v_split"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_170"
+            android:layout_centerInParent="true" />
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/wheelView"
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_close"
+            android:layout_centerHorizontal="true"
+            />
+
+        <ImageButton
+            android:id="@+id/iv_sure"
+            android:layout_width="@dimen/dp_146"
+            android:layout_height="@dimen/dp_41"
+            android:layout_below="@+id/v_split"
+            android:layout_centerHorizontal="true"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_button_sure" />
+    </RelativeLayout>
+</RelativeLayout>

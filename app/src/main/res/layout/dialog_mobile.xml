@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_539"
+        android:layout_height="@dimen/dp_314">
+
+        <ImageView
+            android:id="@id/img_dialog_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_register_bg" />
+
+        <ImageButton
+            android:id="@id/btn_close"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_alignTop="@id/img_dialog_bg"
+            android:layout_alignEnd="@id/img_dialog_bg"
+            android:background="@null"
+            android:src="@drawable/ic_close" />
+
+        <com.xw.repo.widget.BounceScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_57"
+            android:fillViewport="true"
+            android:paddingBottom="@dimen/dp_13"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp_13">
+
+                <include layout="@layout/layout_mobile_view" />
+            </LinearLayout>
+        </com.xw.repo.widget.BounceScrollView>
+    </RelativeLayout>
+</LinearLayout>
