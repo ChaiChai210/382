@@ -32,7 +32,7 @@ public class ActionAdapter extends BaseQuickAdapter<ActionItem, BaseViewHolder> 
         left.setOnClickListener(view -> {
             if(detail.getVisibility() == View.GONE){
                 detail.setVisibility(View.VISIBLE);
-                Glide.with(mContext).load(detailUrl).into(detail);
+                Glide.with(mContext).load(detailUrl).placeholder(R.drawable.placeholder).into(detail);
             }else {
                 detail.setVisibility(View.GONE);
             }

@@ -20,14 +20,12 @@ import butterknife.OnClick;
 
 
 public class WithDrawActivity
-        extends BaseActivity
-        implements View.OnClickListener {
+        extends BaseActivity {
     private static final String TAG = "WithDrawActivity";
     WDBankFragment bankFragment = new WDBankFragment();
     WDBlanceFragment balanceFrg = new WDBlanceFragment();
     WDCardFragment cardFrg = new WDCardFragment();
 
-    RadioButton btn_to_bank;
     @BindView(R.id.img_back_bg)
     ImageView imgBackBg;
     @BindView(R.id.img_title)
@@ -48,20 +46,6 @@ public class WithDrawActivity
 //        EventBus.getDefault().post(new CustomerEvent(paramInt1, paramIntent));
 //    }
 
-    public void onClick(View paramView) {
-        switch (paramView.getId()) {
-            default:
-                break;
-            case R.id.img_back_bg:
-
-                break;
-            case R.id.btn_to_bank:
-//                getSupportFragmentManager().beginTransaction().hide(this.c).hide(this.bankFragment).hide(this.balanceFrg).show(this.cardFrg).commitAllowingStateLoss();
-
-                break;
-        }
-    }
-
 
     @Override
     protected int getLayoutResId() {
@@ -72,10 +56,8 @@ public class WithDrawActivity
     protected void initView() {
 //        playMusic(7, volume);
         //加载loading界面。
-        btn_to_bank = findViewById(R.id.btn_to_bank);
-        btn_to_bank.performClick();
-        //頭部客服
-//        aq.id(R.id.img_title).image(R.drawable.ic_withdraw_title);
+        btnToBank.performClick();
+        imgTitle.setImageResource(R.drawable.ic_withdraw_title);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_wd_contain, bankFragment).commit();
     }
 
@@ -115,12 +97,6 @@ public class WithDrawActivity
         currentFragment = targetFragment;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @OnClick({R.id.img_back_bg, R.id.btn_to_bank, R.id.btn_blance, R.id.btn_card})
     public void onViewClicked(View view) {
@@ -132,7 +108,7 @@ public class WithDrawActivity
                 switchFragment(bankFragment);
                 break;
             case R.id.btn_blance:
-//                switchFragment(balanceFrg);
+                switchFragment(balanceFrg);
                 break;
             case R.id.btn_card:
                 switchFragment(cardFrg);

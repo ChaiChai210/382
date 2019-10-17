@@ -134,7 +134,7 @@ public class MainActivity extends BaseActivity {
     LinearLayout root;
     private boolean accountBalance = false;
     private boolean isLogin = false;
-
+    private LoginBean bean;
     private RecyclerView mLeftRecycler;
     private List<CategoryBean> categoryBeans = new ArrayList<>();
     private CategoryGameAdapter categoryGameAdapter;
@@ -408,7 +408,7 @@ public class MainActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onLoginEvent(LoginEvent event) {
-        LoginBean bean = event.getLoginBean();
+         bean = event.getLoginBean();
         tvLogin.setText(bean.getMemberName());
         btnRegister.setVisibility(View.GONE);
         btnLogin.setVisibility(View.GONE);
@@ -459,7 +459,7 @@ public class MainActivity extends BaseActivity {
                 UIHelper.copySuccess("复制成功");
                 break;
             case R.id.btn_setting:
-                SettingDialog fm2 = new SettingDialog();
+                SettingDialog fm2 = SettingDialog.newInstance(bean.getMemberName(),bean.getVipLevelName(),isLogin);
                 fm2.show(getSupportFragmentManager(), "setting");
                 break;
             case R.id.img_down_moredata:
@@ -506,10 +506,4 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

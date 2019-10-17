@@ -15,4 +15,7 @@ public class Constants {
     public static final String LOGIN = "key_login";
     public static final String Game = "key_game";
     public static final String BANKLIST = "key_bank_list";
+    public static final String ACOUNT = "key_account";
+    public static final String LEVER = "key_lever";
+
 }

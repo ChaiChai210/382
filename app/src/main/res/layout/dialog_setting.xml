@@ -67,7 +67,7 @@
                         android:layout_height="@dimen/dp_48"
                         android:background="@drawable/setting_password_select"
                         android:button="@null"
-                        android:visibility="gone" />
+                        />
 
                     <RadioButton
                         android:id="@+id/rBtn_setting_app_replace"

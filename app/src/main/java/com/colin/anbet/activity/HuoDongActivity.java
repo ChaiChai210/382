@@ -148,6 +148,8 @@ public class HuoDongActivity extends BaseActivity {
         this.recyclerView.addItemDecoration(new RecycleViewDivider(this.mContext, 1, 20, 2131034153));
         actAdapter = new ActionAdapter(R.layout.item_activity_copy, dataList);
         recyclerView.setAdapter(actAdapter);
+
+        getActivityList(1);
     }
 
     protected void onPause() {

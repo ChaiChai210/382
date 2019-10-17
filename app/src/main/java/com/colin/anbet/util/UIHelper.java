@@ -63,7 +63,7 @@ public class UIHelper {
         newCountDownTimer(2000);
     }
     public static void errorToastString(String paramString) {
-        errorToast(paramString, 2131165349);
+        errorToast(paramString,  R.drawable.ic_alert_error);
     }
 
     public static void goBrowser(Context paramContext, String paramString) {
