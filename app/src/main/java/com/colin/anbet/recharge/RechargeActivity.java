@@ -86,6 +86,7 @@ public class RechargeActivity
         playMusic(13, volume);
         //加载loading界面。
         tvGoldenAccount.setText(Utils.double2Decimal(MyApp.getInstance().getBalance()));
+        imgTitle.setImageResource(R.drawable.ic_recharge_title);
         getLeftMenu();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         leftRecyclerView.setLayoutManager(linearLayoutManager);

@@ -91,24 +91,25 @@ public class SettingDialog extends BaseDialogFragment {
         TextView tv_app_version = view.findViewById(R.id.tv_app_version);
         tv_app_version.setText(version);
 
-        if (TextUtils.isEmpty(edOldPassword.getText().toString().trim())) {
-            UIHelper.errorToastString("请输入您的密码");
-            return;
-        }
-        if (TextUtils.isEmpty(edNewPassword.getText().toString().trim())) {
-            UIHelper.errorToastString("请输入您的密码");
-            return;
-        }
-        if (TextUtils.isEmpty(ed_new_password2.getText().toString().trim())) {
-            UIHelper.errorToastString("请输入您的密码");
-            return;
-        }
-        if (ed_new_password2.getText().toString().trim().equals(edNewPassword.getText().toString().trim())) {
-            UIHelper.errorToastString("您两次输入的新密码不一样");
-            return;
-        }
+
         imageButton.setOnClickListener(view1 -> {
 //            submitChangePwd();
+            if (TextUtils.isEmpty(edOldPassword.getText().toString().trim())) {
+                UIHelper.errorToastString("请输入您的密码");
+                return;
+            }
+            if (TextUtils.isEmpty(edNewPassword.getText().toString().trim())) {
+                UIHelper.errorToastString("请输入您的密码");
+                return;
+            }
+            if (TextUtils.isEmpty(ed_new_password2.getText().toString().trim())) {
+                UIHelper.errorToastString("请输入您的密码");
+                return;
+            }
+            if (ed_new_password2.getText().toString().trim().equals(edNewPassword.getText().toString().trim())) {
+                UIHelper.errorToastString("您两次输入的新密码不一样");
+                return;
+            }
         });
 
 

@@ -13,6 +13,7 @@ import com.colin.anbet.util.IntentUtil;
 import com.colin.anbet.util.SPUtils;
 import com.colin.anbet.util.SoftKeyboardUtil;
 import com.colin.anbet.util.ToastUtil;
+import com.colin.anbet.util.UIHelper;
 import com.colin.anbet.util.Utils;
 import com.jungly.gridpasswordview.GridPasswordView;
 import com.jungly.gridpasswordview.imebugfixer.ImeDelBugFixedEditText;
@@ -54,17 +55,21 @@ public class SafePwdDialog extends BaseDialogFragment {
             if (passWord1.length() < 4) {
                 ToastUtil.getInstance().showToast("密码位数不足");
             }
-            verifySafeBoxPassword(Utils.Md5(passWord1));
+//            verifySafeBoxPassword();
+            if(SPUtils.getInstance().getSafeBoxPwd().equals(Utils.Md5(passWord1))) {
+//           UIHelper.okToast("验证通过");
+                dismiss();
+                IntentUtil.startActivity(mContext, SafeBoxActivity.class);
+            }else {
+                UIHelper.errorToastString("密码出错");
+                pswViewSet.clearPassword();
+            }
         });
         setObjByReflect(pswViewSet);
     }
 
     private void verifySafeBoxPassword(String md5) {
-       if(SPUtils.getInstance().getSafeBoxPwd().equals(md5)) {
-//           UIHelper.okToast("验证通过");
-           dismiss();
-           IntentUtil.startActivity(mContext, SafeBoxActivity.class);
-       }
+
     }
 
     private void setObjByReflect(GridPasswordView paramGridPasswordView) {
