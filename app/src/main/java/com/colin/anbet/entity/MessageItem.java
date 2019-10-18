@@ -21,6 +21,22 @@ package com.colin.anbet.entity;
 public class MessageItem {
     private String msgContent;
     private String msgTitle;
-//    private String msgType;
-//    private String msgTypeName;
+    private String msgType;
+    private String msgTypeName;
+
+    public String getMsgContent() {
+        return msgContent;
+    }
+
+    public String getMsgTitle() {
+        return msgTitle;
+    }
+
+    public String getMsgType() {
+        return msgType;
+    }
+
+    public String getMsgTypeName() {
+        return msgTypeName;
+    }
 }

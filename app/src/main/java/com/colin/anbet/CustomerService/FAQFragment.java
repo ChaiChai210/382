@@ -1,9 +1,10 @@
 package com.colin.anbet.CustomerService;
 
+import android.text.Html;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.colin.anbet.R;
-import com.colin.anbet.X5WebView;
 import com.colin.anbet.entity.CustomerServiceList;
 import com.colin.anbet.fragment.BaseFragment;
 import com.colin.anbet.net.BaseResponseBean;
@@ -16,7 +17,6 @@ import com.rxjava.rxlife.RxLife;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import rxhttp.wrapper.param.RxHttp;
 
 /**
@@ -32,14 +32,13 @@ import rxhttp.wrapper.param.RxHttp;
  */
 public class FAQFragment extends BaseFragment {
 
-    @BindView(R.id.web_view)
-    X5WebView webView;
-    private String online;
+
+    @BindView(R.id.textView)
+    TextView textView;
 
     @Override
     protected void init() {
         getCustomerList();
-        webView.setBackgroundColor(0);
 
     }
 
@@ -56,6 +55,8 @@ public class FAQFragment extends BaseFragment {
                         if (!s.getData().isEmpty()) {
                             for (CustomerServiceList item : s.getData()) {
                                 if (item.getCustomerName().equals("常见问题")) {
+//                                    textView.setText(Html.fromHtml(item.getCustomerContent()));
+                                    textView.setText(item.getCustomerContent());
                                     break;
                                 }
                             }
@@ -71,11 +72,8 @@ public class FAQFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_cus_user_vip;
+        return R.layout.fragment_customer_faq;
     }
 
 
-    @OnClick(R.id.web_view)
-    public void onViewClicked() {
-    }
 }

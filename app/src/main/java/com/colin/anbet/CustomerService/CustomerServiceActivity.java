@@ -29,7 +29,7 @@ public class CustomerServiceActivity
     OnlineFragment onlineFragment = new OnlineFragment();
     QQFragment qqFragment = new QQFragment();
     VxFragment vxFragment = new VxFragment();
-    FqcFragment fqcFragment = new FqcFragment();
+    FAQFragment fqcFragment = new FAQFragment();
     private ImageView img_back_bg;
     private ImageView img_title;
     RadioButton btn_online;

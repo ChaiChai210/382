@@ -2,6 +2,7 @@ package com.colin.anbet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,7 @@ import com.colin.anbet.dialog.SettingDialog;
 import com.colin.anbet.entity.CategoryBean;
 import com.colin.anbet.entity.GameList;
 import com.colin.anbet.entity.HotGameList;
+import com.colin.anbet.entity.MessageItem;
 import com.colin.anbet.event.LoginEvent;
 import com.colin.anbet.login.LoginDialog;
 import com.colin.anbet.login.RegisterDialog;
@@ -170,6 +172,7 @@ public class MainActivity extends BaseActivity {
 //        showLoading();
         initLeftMenu();
         submit();
+        getMessage();
 
     }
 
@@ -293,6 +296,46 @@ public class MainActivity extends BaseActivity {
                 });
     }
 
+    private void getMessage() {
+        RxHttp.get(Url.listSiteMessage)
+                .asParser(new CommonParser<List<MessageItem>>(new TypeToken<BaseResponseBean<List<MessageItem>>>() {
+                }))
+                .as(RxLife.asOnMain(this))//返回String类型
+                .subscribe(s -> {          //订阅观察者，
+                    //请求成功
+                    Log.e("请求成功", s.toString());
+                    setMessage(s.getData());
+
+                }, throwable -> {
+                    Log.e("chai", throwable.getMessage());
+                });
+    }
+
+    private void setMessage(List<MessageItem> data) {
+        List<MessageItem> headerMessages = getMessage(data,"30");
+        if(!headerMessages.isEmpty()){
+            StringBuilder stringBuilder = new StringBuilder();
+            int size = headerMessages.size();
+            for(int i = 0;i<size;i++){
+                stringBuilder.append(headerMessages.get(i).getMsgContent());
+                stringBuilder.append("             ");
+            }
+            tvNotify.setText(stringBuilder);
+            tvNotify.setSelected(true);
+            tvNotify.requestFocus();
+        }
+    }
+
+    private List<MessageItem> getMessage(List<MessageItem> data, String type) {
+        List<MessageItem> messageItemList = new ArrayList<>();
+         for(MessageItem item :data){
+             if(item.getMsgType().equals(type)){
+                 messageItemList.add(item);
+             }
+         }
+         return messageItemList;
+    }
+
     private void setHot(BaseResponseBean<List<HotGameList>> s) {
         if (s.getStatus() == 1) {
             if (s.getData().isEmpty()) {
@@ -408,7 +451,7 @@ public class MainActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onLoginEvent(LoginEvent event) {
-         bean = event.getLoginBean();
+        bean = event.getLoginBean();
         tvLogin.setText(bean.getMemberName());
         btnRegister.setVisibility(View.GONE);
         btnLogin.setVisibility(View.GONE);
@@ -459,7 +502,7 @@ public class MainActivity extends BaseActivity {
                 UIHelper.copySuccess("复制成功");
                 break;
             case R.id.btn_setting:
-                SettingDialog fm2 = SettingDialog.newInstance(bean.getMemberName(),bean.getVipLevelName(),isLogin);
+                SettingDialog fm2 = SettingDialog.newInstance(bean.getMemberName(), bean.getVipLevelName(), isLogin);
                 fm2.show(getSupportFragmentManager(), "setting");
                 break;
             case R.id.img_down_moredata:
