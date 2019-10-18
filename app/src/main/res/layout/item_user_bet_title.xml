@@ -5,7 +5,6 @@
     android:orientation="horizontal">
 
     <View
-        android:id="@+id/view_line"
         android:layout_width="@dimen/dp_1"
         android:layout_height="fill_parent"
         android:background="@color/pc_bg_gray1" />

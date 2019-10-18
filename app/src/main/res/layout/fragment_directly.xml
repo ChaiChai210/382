@@ -95,7 +95,6 @@
         android:src="@drawable/ic_chosed" />
 
     <TextView
-        android:id="@+id/tv_id_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/iv_chose_id"

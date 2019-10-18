@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FqcFragment extends Fragment {
-    private static final String TAG = "QqFragment";
+    private static final String TAG = "QqFragment1";
     RecyclerView mRecyclerView;
     FqcAdapter mAdapter;
     List<FqcBean> mDatas = new ArrayList<>();

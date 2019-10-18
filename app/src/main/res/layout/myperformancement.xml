@@ -5,7 +5,6 @@
     android:layout_height="fill_parent">
 
     <LinearLayout
-        android:id="@+id/ll_containner"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginStart="8dp"
@@ -58,7 +57,6 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_container"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
@@ -79,7 +77,6 @@
             </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
             <LinearLayout
-                android:id="@+id/ll_showformula"
                 android:layout_width="@dimen/dp_297"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/include_head"

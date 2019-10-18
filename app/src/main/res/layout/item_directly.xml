@@ -15,7 +15,6 @@
         android:textSize="@dimen/sp_11" />
 
     <TextView
-        android:id="@+id/tv_nickname"
         android:layout_width="0.0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1.0"
@@ -65,7 +64,6 @@
         android:textSize="@dimen/sp_11" />
 
     <ImageView
-        android:id="@+id/iv_oprate"
         android:layout_width="0.0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1.0"

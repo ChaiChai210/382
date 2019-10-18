@@ -7,15 +7,18 @@ import com.colin.anbet.fragment.BaseFragment;
 import com.colin.anbet.util.UrlHelper;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class UserVipFragment extends BaseFragment {
 
 
+    @BindView(R.id.web_view)
+    X5WebView webView;
 
     @Override
     protected void init() {
-//        webView.setBackgroundColor(0);
-//        webView.loadUrl(UrlHelper.URL_VIP);
+        webView.setBackgroundColor(0);
+        webView.loadUrl(UrlHelper.URL_VIP);
     }
 
     @Override
@@ -24,4 +27,7 @@ public class UserVipFragment extends BaseFragment {
     }
 
 
+    @OnClick(R.id.web_view)
+    public void onViewClicked() {
+    }
 }

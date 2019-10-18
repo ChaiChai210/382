@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_bet_item"
     android:layout_width="fill_parent"
     android:layout_height="@dimen/dp_30"
     android:layout_marginStart="@dimen/dp_2"

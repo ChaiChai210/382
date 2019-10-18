@@ -5,9 +5,7 @@
     android:background="@drawable/ic_qipai_bg"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/llayout_title"
-        layout="@layout/activity_topbar" />
+    <include layout="@layout/activity_topbar" />
 
     <LinearLayout
         android:id="@+id/llayout_huodong"

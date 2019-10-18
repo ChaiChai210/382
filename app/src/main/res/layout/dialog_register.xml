@@ -26,7 +26,6 @@
             android:orientation="horizontal">
 
             <RelativeLayout
-                android:id="@+id/rl_account_register_view"
                 android:layout_width="0.0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0">
@@ -50,7 +49,6 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/rl_phone_register_view"
                 android:layout_width="0.0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0">
@@ -302,12 +300,10 @@
                         android:layout_height="fill_parent">
 
                         <RelativeLayout
-                            android:id="@+id/rl_phone_verify"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent">
 
                             <ImageButton
-                                android:id="@+id/btn_phone_verify"
                                 android:layout_width="wrap_content"
                                 android:layout_height="fill_parent"
                                 android:layout_marginStart="@dimen/dp_10"
@@ -316,7 +312,6 @@
                                 android:src="@drawable/ic_send_verify" />
 
                             <TextView
-                                android:id="@+id/tv_verify_code"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"

@@ -14,7 +14,7 @@ public class Url {
     public static String chessCardDir = baseUrl+"uploadImg/ChessCarddataFile/";
     public static String secodeClaseGameUrl = baseUrl+"uploadImg/MenuTwodataFile/";
     public static String promotionDie = baseUrl+"uploadImg/promotions/";
-    public static String customerServiceDie = baseUrl+"uploadImg/customer";
+    public static String customerServiceDir = baseUrl+"uploadImg/customer/";
     public static final String GAME_SECOND = "phone/findGamingPlatfromList";
     public static final String GAME_CLASSIFY = "phone/findGamingList";
     public static final String HOT_GAME = "phone/getHotGames";

@@ -28,7 +28,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_safeBoxMoney"
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/dp_50"
                     android:layout_marginStart="@dimen/dp_10"
@@ -59,14 +58,12 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/iv_direction"
                     android:layout_width="@dimen/dp_59"
                     android:layout_height="@dimen/dp_22"
                     android:background="@null"
                     android:src="@drawable/ic_safe_left" />
 
                 <TextView
-                    android:id="@+id/tv_direction"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
@@ -85,7 +82,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_balanceMoney"
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/dp_50"
                     android:layout_marginStart="@dimen/dp_10"
@@ -300,7 +296,6 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/btn_ok"
         android:layout_width="@dimen/dp_162"
         android:layout_height="@dimen/dp_45"
         android:layout_below="@+id/ll_top"

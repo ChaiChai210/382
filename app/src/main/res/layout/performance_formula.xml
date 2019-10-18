@@ -4,7 +4,6 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/ll_showformula"
         android:layout_width="@dimen/dp_297"
         android:layout_height="wrap_content"
         android:background="@drawable/smallbubble"

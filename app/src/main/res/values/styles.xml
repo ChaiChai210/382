@@ -30,11 +30,6 @@
         <item name="android:windowSoftInputMode">adjustPan|stateHidden</item>
         <item name="android:windowTranslucentNavigation">false</item>
     </style>
-    <style name="TextAmountYellow">
-        <item name="android:textSize">@dimen/sp_10</item>
-        <item name="android:textColor">@color/pc_text</item>
-        <item name="android:gravity">center</item>
-    </style>
 
     <style name="qipai_list">
         <item name="android:ellipsize">marquee</item>
@@ -71,16 +66,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@color/pc_golden_bg</item>
     </style>
-    <style name="TextTypeRed">
-        <item name="android:textSize">@dimen/sp_10</item>
-        <item name="android:textColor">@color/color_status_back_money</item>
-        <item name="android:gravity">center</item>
-    </style>
-    <style name="TextTypeYellow">
-        <item name="android:textSize">@dimen/sp_10</item>
-        <item name="android:textColor">@color/color_status_out_mony</item>
-        <item name="android:gravity">center</item>
-    </style>
+
     <style name="TextTypeGreen">
         <item name="android:textSize">@dimen/sp_10</item>
         <item name="android:textColor">@color/color_status_success</item>

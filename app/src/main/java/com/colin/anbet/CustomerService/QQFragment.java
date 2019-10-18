@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.colin.anbet.R;
-import com.colin.anbet.entity.CustomerList;
 import com.colin.anbet.entity.CustomerServiceList;
 import com.colin.anbet.net.BaseResponseBean;
 import com.colin.anbet.net.CommonParser;
@@ -31,16 +30,16 @@ import java.util.List;
 
 import rxhttp.wrapper.param.RxHttp;
 
-public class VxFragment extends Fragment {
+public class QQFragment extends Fragment {
     private static final String TAG = "QqFragment1";
     RecyclerView mRecyclerView;
-    VxAdapter mAdapter;
+    QqAdapter mAdapter;
     List<CustomerServiceList> mDatas = new ArrayList<>();
     private Context mContext;
 
     private void getCustomerList() {
         RxHttp.get(Url.listCustomer)
-                .add("parentId", "8866")
+                .add("parentId", "168")
                 .asParser(new CommonParser<List<CustomerServiceList>>(new TypeToken<BaseResponseBean<List<CustomerServiceList>>>() {
                 }))
                 .as(RxLife.asOnMain(this))//返回String类型
@@ -64,12 +63,19 @@ public class VxFragment extends Fragment {
 
     private void initView(View view) {
         mRecyclerView = view.findViewById(R.id.rv_cus_qq);
-        mAdapter = new VxAdapter(mDatas);
+        mAdapter = new QqAdapter(mDatas);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.addItemDecoration(new RecycleViewDivider(mContext, 0,
-                (int) mContext.getResources().getDimension(R.dimen.dp_12), ContextCompat.getColor(mContext, R.color.transparent)));
-//        mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 1, RecyclerView.HORIZONTAL, false));
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, 1));
+//        mRecyclerView.addItemDecoration(new RecycleViewDivider(mContext, 0,
+//                (int) mContext.getResources().getDimension(R.dimen.dp_12), ContextCompat.getColor(mContext, R.color.transparent)));
+        GridLayoutManager manager = new GridLayoutManager(
+                getContext(), 4) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+//        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, 1));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 3, RecyclerView.VERTICAL, false));
     }
 
 

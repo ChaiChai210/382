@@ -1,5 +1,6 @@
 package com.colin.anbet.CustomerService;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -9,13 +10,24 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.colin.anbet.BaseActivity;
 import com.colin.anbet.R;
+import com.colin.anbet.entity.CustomerServiceList;
+import com.colin.anbet.net.BaseResponseBean;
+import com.colin.anbet.net.CommonParser;
+import com.colin.anbet.net.Url;
+import com.colin.anbet.util.ToastUtil;
+import com.google.gson.reflect.TypeToken;
+import com.rxjava.rxlife.RxLife;
+
+import java.util.List;
+
+import rxhttp.wrapper.param.RxHttp;
 
 public class CustomerServiceActivity
         extends BaseActivity
         implements View.OnClickListener {
     private static final String TAG = "CustomerServiceActivity";
-    //    OnlineFragment c = new OnlineFragment();
-    QqFragment qqFragment = new QqFragment();
+    OnlineFragment onlineFragment = new OnlineFragment();
+    QQFragment qqFragment = new QQFragment();
     VxFragment vxFragment = new VxFragment();
     FqcFragment fqcFragment = new FqcFragment();
     private ImageView img_back_bg;
@@ -24,10 +36,11 @@ public class CustomerServiceActivity
     RadioButton btn_qq;
     RadioButton btn_vx;
     RadioButton btn_fqc;
-    private Fragment currentFragment = qqFragment;
+    private Fragment currentFragment = onlineFragment;
 //    protected void onActivityResult(int paramInt1, int paramInt2, @Nullable Intent paramIntent) {
 //        EventBus.getDefault().post(new CustomerEvent(paramInt1, paramIntent));
 //    }
+
 
     public void onClick(View paramView) {
         switch (paramView.getId()) {
@@ -72,7 +85,10 @@ public class CustomerServiceActivity
         btn_fqc = findViewById(R.id.btn_fqc);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_wd_contain, currentFragment).commit();
         initListener();
+
+
     }
+
 
     private void initListener() {
         btn_online.setOnClickListener(this);
@@ -82,12 +98,13 @@ public class CustomerServiceActivity
         btn_qq.setOnClickListener(this);
         btn_vx.setOnClickListener(this);
         btn_fqc.setOnClickListener(this);
+    }
 
 
-//    protected void onPause() {
-//        super.onPause();
-//        stopMusic(12);
-//    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopMusic(12);
     }
 
     private void switchFragment(Fragment targetFragment) {
