@@ -12,3 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
+/Anbet.iml
+src/androidTest/
+src/main/res/drawable-v24/
+src/test/

@@ -24,9 +24,11 @@ import com.colin.anbet.activity.XimaActivity;
 import com.colin.anbet.adapter.CategoryGameAdapter;
 import com.colin.anbet.adapter.HotGameAdapter;
 import com.colin.anbet.adapter.RightGameAdapter;
+import com.colin.anbet.dialog.MessageDialog;
 import com.colin.anbet.dialog.SafeDialog;
 import com.colin.anbet.dialog.SafePwdDialog;
 import com.colin.anbet.dialog.SettingDialog;
+import com.colin.anbet.dialog.ToastDialog;
 import com.colin.anbet.entity.CategoryBean;
 import com.colin.anbet.entity.GameList;
 import com.colin.anbet.entity.HotGameList;
@@ -312,6 +314,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setMessage(List<MessageItem> data) {
+        //滚动的公告
         List<MessageItem> headerMessages = getMessage(data,"30");
         if(!headerMessages.isEmpty()){
             StringBuilder stringBuilder = new StringBuilder();
@@ -323,6 +326,17 @@ public class MainActivity extends BaseActivity {
             tvNotify.setText(stringBuilder);
             tvNotify.setSelected(true);
             tvNotify.requestFocus();
+        }
+        List<MessageItem> toastMessage = getMessage(data,"28");
+        if(!headerMessages.isEmpty()){
+            showFragment(ToastDialog.newInstance(toastMessage.get(0).getMsgContent()));
+        }
+        //站内信
+        List<MessageItem> commonMessage = getMessage(data,"26");
+        int size = commonMessage.size();
+        if(size > 0){
+            ivMsgCount.setVisibility(View.VISIBLE);
+            ivMsgCount.setText(String.valueOf(size));
         }
     }
 
@@ -514,6 +528,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, XimaActivity.class));
                 break;
             case R.id.btn_message:
+                showFragment(new MessageDialog());
                 break;
             case R.id.btn_customer:
                 startActivity(new Intent(this, CustomerServiceActivity.class));

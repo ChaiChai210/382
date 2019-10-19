@@ -23,6 +23,15 @@ public class MessageItem {
     private String msgTitle;
     private String msgType;
     private String msgTypeName;
+    private boolean isRead;
+
+    public void setRead(boolean read) {
+        isRead = read;
+    }
+
+    public boolean isRead() {
+        return isRead;
+    }
 
     public String getMsgContent() {
         return msgContent;

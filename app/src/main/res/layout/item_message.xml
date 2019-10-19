@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:background="@color/color5"
+        android:paddingStart="@dimen/dp_17"
+        android:paddingTop="@dimen/dp_9"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_13">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/tv_time"
+            android:maxLines="3"
+            tools:text="公告"
+            android:textColor="@color/color3"
+            android:textSize="@dimen/sp_15" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_title"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/dp_5"
+            android:maxLines="1"
+            android:text="棋牌游戏活动"
+            android:textColor="@color/color3"
+            android:textSize="@dimen/sp_10" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title">
+
+            <TextView
+                android:id="@+id/tv_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_toStartOf="@+id/iv_detail"
+                android:maxLines="1"
+                tools:text="[安博娱乐]"
+                android:textColor="@color/color3"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_sub_title"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/iv_detail"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="棋牌游戏活动"
+                android:textColor="@color/color3"
+                android:textSize="@dimen/sp_12" />
+
+            <ImageView
+                android:id="@+id/iv_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_10"
+                android:src="@drawable/check_detail" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
