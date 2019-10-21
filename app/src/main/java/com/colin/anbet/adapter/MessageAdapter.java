@@ -15,13 +15,14 @@ public class MessageAdapter
         super(R.layout.item_message, paramList);
     }
 
-    protected void convert(BaseViewHolder vh, MessageItem item) {
+    @Override
+    protected void convert(BaseViewHolder helper, MessageItem item) {
 
-
-        vh.setText(R.id.tv_title, item.getMsgTypeName());
-        vh.setText(R.id.tv_content, item.getMsgContent());
-
+        helper.setText(R.id.tv_title, item.getMsgTypeName());
+        helper.setText(R.id.tv_content, item.getMsgContent());
     }
+
+
 }
 
 

@@ -131,4 +131,6 @@
     <dimen name="dp_59">59dp</dimen>
     <dimen name="dp_69">69dp</dimen>
     <dimen name="dp_162">162dp</dimen>
+    <dimen name="dp_141">141dp</dimen>
+    <dimen name="dp_196">196dp</dimen>
 </resources>

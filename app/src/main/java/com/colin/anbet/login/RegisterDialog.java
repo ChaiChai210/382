@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.colin.anbet.R;
 import com.colin.anbet.dialog.BaseDialogFragment;
+import com.colin.anbet.net.Url;
 import com.colin.anbet.util.ToastUtil;
 import com.colin.anbet.util.Utils;
 import com.colin.anbet.widget.CheckView;
@@ -145,9 +146,10 @@ public class RegisterDialog extends BaseDialogFragment {
                     ToastUtil.getInstance().showToast("验证码不对！");
                     return;
                 }
-                RxHttp.postForm("member/memberByPhone")
+                RxHttp.postJson(Url.register)
                         .add("memberName", account)
                         .add("memberPwd", password)
+                        .add("platformType","Android")
                         .asString()                //返回String类型
                         .subscribe(s -> {          //订阅观察者，
                             //请求成功

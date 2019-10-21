@@ -263,4 +263,8 @@ public class UserInfoFragment extends BaseFragment {
         ivUpVip.setImageResource(upperIcons.get(upper));
         ivNextVip.setImageResource(nextIcons.get(next));
     }
+
+    private void setVipTitle(String title) {
+        tvVipTitle.setText(String.format("尊敬的%1$s会员，您享受以下权益", title));
+    }
 }

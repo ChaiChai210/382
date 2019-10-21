@@ -13,13 +13,20 @@ import android.text.SpannableString;
 import android.text.SpannedString;
 import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
+import android.util.Base64;
 import android.widget.EditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
@@ -322,6 +329,44 @@ public class Utils {
 
     public static double sum(double paramDouble1, double paramDouble2) {
         return new BigDecimal(Double.toString(paramDouble1)).add(new BigDecimal(Double.toString(paramDouble2))).doubleValue();
+    }
+
+    public static String getLoginBase64(String str, String password) {
+        JSONObject jo = new JSONObject();
+        //wangwu w12345678
+        try {
+            jo.put("memberPwd", password);
+            jo.put("memberName", str);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String result = "";
+        try {
+            result = URLEncoder.encode(jo.toString(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+//        String finalResult = Base64.getEncoder().encodeToString(result.getBytes());
+        return Base64.encodeToString(result.getBytes(Charset.forName("UTF-8")), Base64.DEFAULT);
+    }
+    public static String getChangePwdBase64(String memberId,String old, String newPwd) {
+        JSONObject jo = new JSONObject();
+        //wangwu w12345678
+        try {
+            jo.put("memberId", memberId);
+            jo.put("newPwd", newPwd);
+            jo.put("oldPwd", old);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String result = "";
+        try {
+            result = URLEncoder.encode(jo.toString(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+//        String finalResult = Base64.getEncoder().encodeToString(result.getBytes());
+        return Base64.encodeToString(result.getBytes(Charset.forName("UTF-8")), Base64.DEFAULT);
     }
 }
 

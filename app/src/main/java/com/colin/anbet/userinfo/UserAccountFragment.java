@@ -72,19 +72,20 @@ public class UserAccountFragment extends BaseFragment {
     @BindView(R.id.ll_user_act)
     RelativeLayout llUserAct;
 
-    BetAccountAdapter betAccountAdapter;
-    BetTitleAdapter titleAdapter;
+    private BetAccountAdapter betAccountAdapter;
+    private BetTitleAdapter titleAdapter;
     private PopupWindow popupWindow;
-    View container;
+    private View container;
 
     private String choseDate = "month";
     private int page = 1;
     private int totalPage = 1;
-    private String statusId ;
+    private String statusId;
     private Map<String, String> params = new HashMap<>();
     private List<TradeStatusBean> statusBeans = new ArrayList<>();
 
-    private List<UserAccountItem> accountItemList =new ArrayList<>();
+    private List<UserAccountItem> accountItemList = new ArrayList<>();
+
     @Override
 
     protected void init() {
@@ -112,6 +113,7 @@ public class UserAccountFragment extends BaseFragment {
         getStates();
         getAccountDetail();
     }
+
     private void getAccountDetail() {
         if (!TextUtils.isEmpty(choseDate)) {
             params.put("dateId", choseDate);

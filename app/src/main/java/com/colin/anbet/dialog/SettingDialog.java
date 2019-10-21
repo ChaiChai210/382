@@ -2,6 +2,7 @@ package com.colin.anbet.dialog;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,17 +16,29 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.colin.anbet.R;
+import com.colin.anbet.event.LoginEvent;
+import com.colin.anbet.net.ChangeBean;
+import com.colin.anbet.net.LoginBean;
+import com.colin.anbet.net.Url;
 import com.colin.anbet.util.Constants;
+import com.colin.anbet.util.EventBusHelper;
 import com.colin.anbet.util.MediaPlayUtil;
 import com.colin.anbet.util.SPUtils;
 import com.colin.anbet.util.SoundPoolUtil;
+import com.colin.anbet.util.ToastUtil;
 import com.colin.anbet.util.UIHelper;
+import com.colin.anbet.util.Utils;
 import com.king.app.dialog.AppDialog;
 import com.king.app.dialog.AppDialogConfig;
 import com.king.app.updater.AppUpdater;
+import com.rxjava.rxlife.RxLife;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import rxhttp.wrapper.param.RxHttp;
+import rxhttp.wrapper.utils.LogUtil;
+
+import static com.colin.anbet.util.Constants.LOGIN;
 
 public class SettingDialog extends BaseDialogFragment {
 
@@ -48,20 +61,8 @@ public class SettingDialog extends BaseDialogFragment {
 
     private String account;
     private String lever;
+    private LoginBean loginBean;
 
-    public static SettingDialog newInstance(String account, String lever, boolean isLogin) {
-        SettingDialog frag = new SettingDialog();
-        Bundle args = new Bundle();
-        args.putString(Constants.ACOUNT, account);
-        args.putString(Constants.LEVER, lever);
-        args.putBoolean(Constants.LOGIN, isLogin);
-        frag.setArguments(args);
-        return frag;
-    }
-
-    //    private RadioGroup rg_setting;
-//    private RadioButton changePwd;
-//    private FrameLayout content;
     private String version;
 
     @Override
@@ -75,9 +76,17 @@ public class SettingDialog extends BaseDialogFragment {
     }
 
     private void initData() {
-        account = getArguments().getString(Constants.ACOUNT);
-        lever = getArguments().getString(Constants.LEVER);
-        isLogin = getArguments().getBoolean(Constants.LOGIN);
+//        account = getArguments().getString(Constants.ACOUNT);
+//        lever = getArguments().getString(Constants.LEVER);
+//        isLogin = getArguments().getBoolean(Constants.LOGIN);
+        loginBean = SPUtils.getInstance().getObject(LOGIN, LoginBean.class);
+        if (loginBean == null) {
+            isLogin = false;
+        } else {
+            isLogin = true;
+            account = loginBean.getMemberName();
+            lever = loginBean.getVipLevelName();
+        }
 
     }
 
@@ -93,12 +102,13 @@ public class SettingDialog extends BaseDialogFragment {
 
 
         imageButton.setOnClickListener(view1 -> {
-//            submitChangePwd();
-            if (TextUtils.isEmpty(edOldPassword.getText().toString().trim())) {
+            String old = edOldPassword.getText().toString().trim();
+            String newPwd = edNewPassword.getText().toString().trim();
+            if (TextUtils.isEmpty(old)) {
                 UIHelper.errorToastString("请输入您的密码");
                 return;
             }
-            if (TextUtils.isEmpty(edNewPassword.getText().toString().trim())) {
+            if (TextUtils.isEmpty(newPwd)) {
                 UIHelper.errorToastString("请输入您的密码");
                 return;
             }
@@ -106,15 +116,40 @@ public class SettingDialog extends BaseDialogFragment {
                 UIHelper.errorToastString("请输入您的密码");
                 return;
             }
-            if (ed_new_password2.getText().toString().trim().equals(edNewPassword.getText().toString().trim())) {
+            if (!ed_new_password2.getText().toString().trim().equals(newPwd)) {
                 UIHelper.errorToastString("您两次输入的新密码不一样");
                 return;
             }
+            submitChangePwd(old, newPwd);
         });
 
 
         content.removeAllViews();
         content.addView(view);
+    }
+
+    private void submitChangePwd(String old, String newPwd) {
+        String finalResult = Utils.getChangePwdBase64(loginBean.getMemberId(), old, newPwd);
+        Log.e("chai", finalResult);
+        LogUtil.setDebug(true);
+        //后台接口get与post请求都能用，然后base64请求后会被转码，故这样处理
+        RxHttp.get(Url.updateLoginPwd + "?dataStr=" + finalResult)
+//                .add("dataStr", finalResult)
+                .asObject(ChangeBean.class)
+                .as(RxLife.asOnMain(this))//返回String类型
+                .subscribe(s -> {          //订阅观察者，
+                    //请求成功
+                    Log.e("请求成功", s.toString());
+                    if (s.getStatus() == 1) {
+                        UIHelper.okToast("修改成功");
+
+                    } else {
+                        ToastUtil.getInstance().showToast(s.getMsg());
+                    }
+
+                }, throwable -> {
+                    Log.e("chai", throwable.getMessage());
+                });
     }
 
     private void settingSoundFragment() {

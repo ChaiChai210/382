@@ -6,16 +6,19 @@ import android.os.Message;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.colin.anbet.CustomerService.CustomerServiceActivity;
 import com.colin.anbet.Withdraw.WithDrawActivity;
 import com.colin.anbet.activity.ChessCardActivity;
@@ -221,22 +224,44 @@ public class MainActivity extends BaseActivity {
         Log.e("chai", url);
     }
 
+
     private void initRightContent(int clickPos) {
         mRightRecycler = findViewById(R.id.recyclerViewContent);
         mRightRecycler.setLayoutManager(getLayoutManager(clickPos));
+        mRightRecycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                switch (newState) {
+                    case RecyclerView.SCROLL_STATE_DRAGGING:
+                    case RecyclerView.SCROLL_STATE_SETTLING:
+                        if (MainActivity.this.isFinishing()) {
+                            return;
+                        }
+                        Glide.with(mRightRecycler.getContext()).pauseRequests();
+                        break;
+                    case RecyclerView.SCROLL_STATE_IDLE:
+                        if (MainActivity.this.isFinishing())
+                            return;
+                        Glide.with(mRightRecycler.getContext()).resumeRequests();
+                        break;
+                }
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
 
         if (clickPos != 0) {
+            contentList.clear();
             mRightGameAdapter = new RightGameAdapter(contentList, clickPos);
             mRightRecycler.setAdapter(mRightGameAdapter);
             mRightGameAdapter.setOnItemClickListener((adapter, view, position) -> {
                 Intent intent = new Intent(MainActivity.this, ChessCardActivity.class);
                 intent.putExtra(Constants.Game, contentList.get(position).getCode());
                 MainActivity.this.startActivity(intent);
-//                if(isLogin){
-//
-//                }else {
-//                    showFragment(LoginDialog.newInstance("", ""));
-//                }
 
             });
         }
@@ -260,12 +285,11 @@ public class MainActivity extends BaseActivity {
                         //请求成功
                         Log.e("请求成功", s.toString());
                         if (s.getStatus() == 1) {
-                            contentList.clear();
-                            if (s.getData().isEmpty()) {
-
-                            } else {
+                            if (!s.getData().isEmpty()) {
                                 contentList.addAll(s.getData());
                                 mRightGameAdapter.notifyDataSetChanged();
+                                mRightRecycler.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(mContext, R.anim.layout_animation_from_right));
+                                mRightRecycler.scheduleLayoutAnimation();
                             }
                         } else {
                             ToastUtil.getInstance().showToast(s.getMsg());
@@ -315,11 +339,11 @@ public class MainActivity extends BaseActivity {
 
     private void setMessage(List<MessageItem> data) {
         //滚动的公告
-        List<MessageItem> headerMessages = getMessage(data,"30");
-        if(!headerMessages.isEmpty()){
+        List<MessageItem> headerMessages = getMessage(data, "30");
+        if (!headerMessages.isEmpty()) {
             StringBuilder stringBuilder = new StringBuilder();
             int size = headerMessages.size();
-            for(int i = 0;i<size;i++){
+            for (int i = 0; i < size; i++) {
                 stringBuilder.append(headerMessages.get(i).getMsgContent());
                 stringBuilder.append("             ");
             }
@@ -327,14 +351,14 @@ public class MainActivity extends BaseActivity {
             tvNotify.setSelected(true);
             tvNotify.requestFocus();
         }
-        List<MessageItem> toastMessage = getMessage(data,"28");
-        if(!headerMessages.isEmpty()){
+        List<MessageItem> toastMessage = getMessage(data, "28");
+        if (!headerMessages.isEmpty()) {
             showFragment(ToastDialog.newInstance(toastMessage.get(0).getMsgContent()));
         }
         //站内信
-        List<MessageItem> commonMessage = getMessage(data,"26");
+        List<MessageItem> commonMessage = getMessage(data, "26");
         int size = commonMessage.size();
-        if(size > 0){
+        if (size > 0) {
             ivMsgCount.setVisibility(View.VISIBLE);
             ivMsgCount.setText(String.valueOf(size));
         }
@@ -342,12 +366,12 @@ public class MainActivity extends BaseActivity {
 
     private List<MessageItem> getMessage(List<MessageItem> data, String type) {
         List<MessageItem> messageItemList = new ArrayList<>();
-         for(MessageItem item :data){
-             if(item.getMsgType().equals(type)){
-                 messageItemList.add(item);
-             }
-         }
-         return messageItemList;
+        for (MessageItem item : data) {
+            if (item.getMsgType().equals(type)) {
+                messageItemList.add(item);
+            }
+        }
+        return messageItemList;
     }
 
     private void setHot(BaseResponseBean<List<HotGameList>> s) {
@@ -359,6 +383,8 @@ public class MainActivity extends BaseActivity {
                     AppUtil.gotoWebView(MainActivity.this, mHotGameAdapter.getItem(position).getLiveCode(), mHotGameAdapter.getItem(position).getGameType());
                 });
                 mRightRecycler.setAdapter(mHotGameAdapter);
+                mRightRecycler.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(mContext, R.anim.layout_animation_from_right));
+                mRightRecycler.scheduleLayoutAnimation();
             }
         } else {
             UIHelper.errorToastString(s.getMsg());
@@ -516,7 +542,8 @@ public class MainActivity extends BaseActivity {
                 UIHelper.copySuccess("复制成功");
                 break;
             case R.id.btn_setting:
-                SettingDialog fm2 = SettingDialog.newInstance(bean.getMemberName(), bean.getVipLevelName(), isLogin);
+
+                SettingDialog fm2 = new SettingDialog();
                 fm2.show(getSupportFragmentManager(), "setting");
                 break;
             case R.id.img_down_moredata:

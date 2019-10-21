@@ -57,8 +57,8 @@ public class RightGameAdapter
 //                }
 //            });
         }else {
-            layoutParams.height = (int) mContext.getResources().getDimension(R.dimen.dp_180);
-            layoutParams.width = (int) mContext.getResources().getDimension(R.dimen.dp_200);
+            layoutParams.height = (int) mContext.getResources().getDimension(R.dimen.dp_196);
+            layoutParams.width = (int) mContext.getResources().getDimension(R.dimen.dp_141);
             imageView.setLayoutParams(layoutParams);
             setNormalImage(Url.secodeClaseGameUrl +item.getH5ImgUrl(), imageView);
         }

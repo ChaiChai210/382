@@ -56,16 +56,12 @@ public class SafeBoxActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        playMusic(6, volume);
         imgTitle.setImageResource(R.drawable.ic_title_safe_box);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_safe_contain, currentFragment).commit();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 
     @OnClick({R.id.img_back_bg, R.id.btn_zhuanru, R.id.btn_quchu, R.id.btn_mingxi})
     public void onViewClicked(View view) {
@@ -83,6 +79,12 @@ public class SafeBoxActivity extends BaseActivity {
                 switchFragment(mxFragment);
                 break;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopMusic(6);
     }
 
     private void switchFragment(Fragment targetFragment) {

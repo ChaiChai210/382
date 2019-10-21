@@ -9,6 +9,11 @@ public class GameList {
     private String name;
     private String type;
     private String h5ImgUrl;
+    private String parentId;
+
+    public String getParentId() {
+        return parentId;
+    }
 
     public String getH5ImgUrl() {
         return h5ImgUrl;

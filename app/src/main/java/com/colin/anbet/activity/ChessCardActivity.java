@@ -126,12 +126,6 @@ public class ChessCardActivity
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @OnClick({R.id.img_back_bg, R.id.btn_xsj, R.id.btn_qly, R.id.btn_ky, R.id.btn_lucky, R.id.btn_wz})
     public void onViewClicked(View view) {

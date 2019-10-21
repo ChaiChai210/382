@@ -8,6 +8,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 
 import com.colin.anbet.R;
+import com.colin.anbet.Safe.SafeBoxActivity;
+import com.colin.anbet.util.IntentUtil;
 import com.colin.anbet.util.SPUtils;
 import com.colin.anbet.util.SoftKeyboardUtil;
 import com.colin.anbet.util.ToastUtil;
@@ -70,6 +72,7 @@ public class SafeDialog extends BaseDialogFragment {
         UIHelper.okToast("设置密码成功");
         SPUtils.getInstance().setFirstEnter(false);
         dismiss();
+        IntentUtil.startActivity(mContext, SafeBoxActivity.class);
     }
 
     private void setObjByReflect(GridPasswordView paramGridPasswordView) {
