@@ -120,6 +120,10 @@ public class SettingDialog extends BaseDialogFragment {
                 UIHelper.errorToastString("您两次输入的新密码不一样");
                 return;
             }
+            if (!Utils.isPwd(old) ||!Utils.isPwd(newPwd)||!Utils.isPwd(ed_new_password2.getText().toString().trim())) {
+                UIHelper.errorToastString("请输入6-12位密码");
+                return;
+            }
             submitChangePwd(old, newPwd);
         });
 

@@ -16,6 +16,7 @@ import com.colin.anbet.R;
 import com.colin.anbet.dialog.BaseDialogFragment;
 import com.colin.anbet.net.Url;
 import com.colin.anbet.util.ToastUtil;
+import com.colin.anbet.util.UIHelper;
 import com.colin.anbet.util.Utils;
 import com.colin.anbet.widget.CheckView;
 
@@ -119,7 +120,7 @@ public class RegisterDialog extends BaseDialogFragment {
                 return;
             }
             if (!Utils.isPwd(password) || !Utils.isPwd(rePassword)) {
-                ToastUtil.getInstance().showToast("您输入的密码有误");
+                UIHelper.errorToastString("请输入6-12位密码");
                 return;
             }
 

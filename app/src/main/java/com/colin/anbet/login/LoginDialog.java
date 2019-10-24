@@ -84,18 +84,18 @@ public class LoginDialog extends BaseDialogFragment {
                 UIHelper.errorToastString("请输入您的账号");
                 return;
             }
-//            if (!Utils.isAccount(str)) {
-//                UIHelper.errorToastString("您输入的账号有误");
-//                return;
-//            }
+            if (!Utils.isAccount(str)) {
+                UIHelper.errorToastString("您输入的账号有误");
+                return;
+            }
             if (TextUtils.isEmpty(password)) {
                 UIHelper.errorToastString("请输入您的密码");
                 return;
             }
-//            if (!Utils.isPwd(password)) {
-//                UIHelper.errorToastString("您输入的密码有误");
-//                return;
-//            }
+            if (!Utils.isPwd(password)) {
+                UIHelper.errorToastString("请输入6-12位密码");
+                return;
+            }
             if (checkbox.isChecked()) {
                 SPUtils.getInstance().setAccount(str);
                 SPUtils.getInstance().setPwd(password);

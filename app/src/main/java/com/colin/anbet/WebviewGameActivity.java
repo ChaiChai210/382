@@ -51,6 +51,7 @@ public class WebviewGameActivity extends BaseActivity {
     }
 
     private void getGameUrl() {
+        showLoading();
         RxHttp.get(Url.GAME_URL)
                 .add("liveCode", code)
                 .add("gameType",gameType)
@@ -59,6 +60,7 @@ public class WebviewGameActivity extends BaseActivity {
                 .subscribe(s -> {          //订阅观察者，
                     //请求成功
                     Log.e("请求成功", s.toString());
+                    hideLoading();
                     if (s.getStatus().equals("1")) {
                         mWebView.loadUrl(s.getD().getUrl());
 //        CookieSyncManager.createInstance(this);
@@ -76,6 +78,7 @@ public class WebviewGameActivity extends BaseActivity {
                         });
                     } else {
                         UIHelper.errorToastString(s.getM());
+                        hideLoading();
                     }
 
                 }, throwable -> {

@@ -50,7 +50,7 @@ public class CustomerServiceActivity
                 finish();
                 break;
             case R.id.btn_online:
-//                switchFragment(bankFragment);
+                switchFragment(onlineFragment);
                 break;
             case R.id.btn_qq:
                 switchFragment(qqFragment);
