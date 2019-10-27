@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.colin.anbet.R;
+import com.colin.anbet.entity.bean383.MyPerformanceBean;
 import com.colin.anbet.util.DensityUtil;
 import com.colin.anbet.util.SPUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;

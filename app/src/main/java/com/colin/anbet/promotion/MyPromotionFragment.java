@@ -18,7 +18,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.colin.anbet.R;
-import com.colin.anbet.entity.ShareBean;
+import com.colin.anbet.entity.bean383.ShareBean;
 import com.colin.anbet.util.BaseCallBack;
 import com.colin.anbet.util.FileUtils;
 import com.colin.anbet.util.ImageUtils;

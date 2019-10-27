@@ -100,9 +100,6 @@ public class LoginDialog extends BaseDialogFragment {
                 SPUtils.getInstance().setAccount(str);
                 SPUtils.getInstance().setPwd(password);
             }
-            //todo 登录逻辑
-//                view = ApiMapUtils.loginMap(view, Utils.pwdMD5(password), VersionHelper.instance().getPackageName(), Utils.appMD5(view.toLowerCase()));
-//                MainActivity.e(MainActivity.this).login(view);
             submit(str, password);
 
         });

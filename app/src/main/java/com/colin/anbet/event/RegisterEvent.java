@@ -1,4 +1,4 @@
-package com.colin.anbet.login;
+package com.colin.anbet.event;
 
 public class RegisterEvent {
     private String accout;

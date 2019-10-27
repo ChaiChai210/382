@@ -1,4 +1,4 @@
-package com.colin.anbet.entity;
+package com.colin.anbet.entity.bean383;
 
 public class BankCardResult
 {

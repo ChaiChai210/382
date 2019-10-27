@@ -22,7 +22,7 @@ import com.colin.anbet.entity.BetClassifyBean;
 import com.colin.anbet.entity.GameList;
 import com.colin.anbet.entity.UserBetItem;
 import com.colin.anbet.entity.UserBetWholeBean;
-import com.colin.anbet.fragment.BaseFragment;
+import com.colin.anbet.base.BaseFragment;
 import com.colin.anbet.net.BaseResponseBean;
 import com.colin.anbet.net.CommonParser;
 import com.colin.anbet.net.Url;

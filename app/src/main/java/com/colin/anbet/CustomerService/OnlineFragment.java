@@ -5,12 +5,11 @@ import android.util.Log;
 import com.colin.anbet.R;
 import com.colin.anbet.X5WebView;
 import com.colin.anbet.entity.CustomerServiceList;
-import com.colin.anbet.fragment.BaseFragment;
+import com.colin.anbet.base.BaseFragment;
 import com.colin.anbet.net.BaseResponseBean;
 import com.colin.anbet.net.CommonParser;
 import com.colin.anbet.net.Url;
 import com.colin.anbet.util.ToastUtil;
-import com.colin.anbet.util.UrlHelper;
 import com.google.gson.reflect.TypeToken;
 import com.rxjava.rxlife.RxLife;
 

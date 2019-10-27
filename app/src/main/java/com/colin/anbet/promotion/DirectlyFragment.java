@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.colin.anbet.R;
+import com.colin.anbet.entity.bean383.PromoteNextData;
 import com.colin.anbet.widget.MultipleStatusView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 

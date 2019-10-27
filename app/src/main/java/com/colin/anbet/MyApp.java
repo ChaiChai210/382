@@ -15,10 +15,12 @@ import com.colin.anbet.util.MediaPlayUtil;
 import com.colin.anbet.util.SPUtils;
 import com.colin.anbet.util.SoundPoolUtil;
 import com.colin.anbet.util.ToastUtil;
+import com.tencent.smtt.sdk.QbSdk;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import rxhttp.wrapper.param.RxHttp;
 
@@ -47,21 +49,21 @@ public class MyApp extends Application {
         SoundPoolUtil.getInstance(this);
         MediaPlayUtil.getInstance(this);
         SPUtils.getInstance().init(this);
-//        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
-//
-//            @Override
-//            public void onViewInitFinished(boolean arg0) {
-//                // TODO Auto-generated method stub
-//                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
-//            }
-//
-//            @Override
-//            public void onCoreInitFinished() {
-//                // TODO Auto-generated method stub
-//            }
-//        };
-//        //x5内核初始化接口
-//        QbSdk.initX5Environment(getApplicationContext(), cb);
+        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
+
+            @Override
+            public void onViewInitFinished(boolean arg0) {
+                // TODO Auto-generated method stub
+                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+            }
+
+            @Override
+            public void onCoreInitFinished() {
+                // TODO Auto-generated method stub
+            }
+        };
+        //x5内核初始化接口
+        QbSdk.initX5Environment(getApplicationContext(), cb);
 
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
@@ -83,9 +85,9 @@ public class MyApp extends Application {
 
             @Override
             public void onActivityResumed(@NonNull Activity activity) {
-//                if ((activity instanceof WebviewGameActivity)) {
-//                    MediaPlayUtil.pause();
-//                }
+                if ((activity instanceof WebviewGameActivity)) {
+                    MediaPlayUtil.pause();
+                }
             }
 
             @Override

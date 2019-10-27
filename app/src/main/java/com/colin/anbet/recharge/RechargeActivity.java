@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.colin.anbet.BaseActivity;
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.MyApp;
 import com.colin.anbet.R;
 import com.colin.anbet.dialog.ChargeHistoryDialog;

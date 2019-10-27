@@ -1,6 +1,5 @@
 package com.colin.anbet.Withdraw;
 
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -11,11 +10,10 @@ import android.widget.RadioGroup;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.colin.anbet.BaseActivity;
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 

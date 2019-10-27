@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.colin.anbet.R;
+import com.colin.anbet.entity.bean383.PromoteNextData;
 import com.colin.anbet.util.Utils;
 
 import java.util.List;

@@ -1,6 +1,5 @@
 package com.colin.anbet.activity;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -9,12 +8,11 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.colin.anbet.BaseActivity;
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
 import com.colin.anbet.widget.MultipleStatusView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 

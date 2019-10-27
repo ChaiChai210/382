@@ -1,7 +1,6 @@
 package com.colin.anbet.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.colin.anbet.BaseActivity;
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
 import com.colin.anbet.adapter.HotGameAdapter;
 import com.colin.anbet.entity.HotGameList;
@@ -31,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rxhttp.wrapper.param.RxHttp;
 

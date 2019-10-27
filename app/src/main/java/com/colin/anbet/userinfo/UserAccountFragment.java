@@ -20,7 +20,7 @@ import com.colin.anbet.adapter.BetTitleAdapter;
 import com.colin.anbet.entity.TradeStatusBean;
 import com.colin.anbet.entity.UserAccountItem;
 import com.colin.anbet.entity.UserAccountWholeBean;
-import com.colin.anbet.fragment.BaseFragment;
+import com.colin.anbet.base.BaseFragment;
 import com.colin.anbet.net.BaseResponseBean;
 import com.colin.anbet.net.CommonParser;
 import com.colin.anbet.net.Url;

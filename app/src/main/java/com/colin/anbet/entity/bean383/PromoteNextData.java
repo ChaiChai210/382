@@ -1,4 +1,4 @@
-package com.colin.anbet.promotion;
+package com.colin.anbet.entity.bean383;
 
 public class PromoteNextData
 {

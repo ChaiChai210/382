@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo;
 import android.util.Log;
 import android.widget.FrameLayout;
 
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.dialog.BackDialog;
 import com.colin.anbet.entity.GameBean;
 import com.colin.anbet.net.Url;

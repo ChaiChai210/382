@@ -7,7 +7,7 @@ import android.widget.RadioButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.colin.anbet.BaseActivity;
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
 
 

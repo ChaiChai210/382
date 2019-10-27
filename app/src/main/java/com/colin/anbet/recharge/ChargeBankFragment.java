@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.colin.anbet.R;
-import com.colin.anbet.fragment.BaseFragment;
+import com.colin.anbet.base.BaseFragment;
 import com.colin.anbet.widget.RecycleViewDivider;
 
 import butterknife.BindView;

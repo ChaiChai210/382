@@ -1,4 +1,4 @@
-package com.colin.anbet.fragment;
+package com.colin.anbet.base;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.colin.anbet.BaseActivity;
 import com.colin.anbet.R;
 import com.colin.anbet.dialog.BaseDialogFragment;
 import com.colin.anbet.util.SoundPoolUtil;

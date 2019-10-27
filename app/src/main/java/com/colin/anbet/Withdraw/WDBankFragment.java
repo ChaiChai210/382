@@ -17,7 +17,7 @@ import com.colin.anbet.MyApp;
 import com.colin.anbet.R;
 import com.colin.anbet.entity.BankCardItem;
 import com.colin.anbet.entity.WithdrawalRange;
-import com.colin.anbet.fragment.BaseFragment;
+import com.colin.anbet.base.BaseFragment;
 import com.colin.anbet.net.BaseResponseBean;
 import com.colin.anbet.net.CommonParser;
 import com.colin.anbet.net.LoginBean;

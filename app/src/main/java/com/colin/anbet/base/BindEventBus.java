@@ -1,4 +1,4 @@
-package com.colin.anbet;
+package com.colin.anbet.base;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -16,7 +16,7 @@ import com.colin.anbet.adapter.BetClassifyAdapter;
 import com.colin.anbet.adapter.BetTimeAdapter;
 import com.colin.anbet.adapter.BetTitleAdapter;
 import com.colin.anbet.entity.BetClassifyBean;
-import com.colin.anbet.fragment.BaseFragment;
+import com.colin.anbet.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

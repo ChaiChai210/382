@@ -53,8 +53,8 @@ public class Url {
     public static final String listWithdrawalsRecord = "phone/listWithdrawalsRecord";
     //会员充值
     public static final String czGenerateOrder = "phone/czGenerateOrder";
-    //    、、查询会员余额方法
-    public static final String findMemberBalance = "phone/findMemberBalance";
+    //    查询会员余额方法
+    public static final String findMemberBalance = "phone/memberManager/findMemberBalance";
     public static final String LOGIN = "phone/memberManager/login";
     public static final String logout = "phone/memberManager/logout";
     public static final String register = "phone/memberManager/register";

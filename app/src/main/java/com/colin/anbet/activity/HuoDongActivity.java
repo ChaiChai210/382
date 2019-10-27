@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.colin.anbet.BaseActivity;
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
 import com.colin.anbet.adapter.ActionAdapter;
 import com.colin.anbet.entity.ActionItem;

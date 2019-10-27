@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.colin.anbet.R;
+import com.colin.anbet.entity.bean383.MyPerformanceBean;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
 package com.colin.anbet.Safe;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -11,11 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 
-import com.colin.anbet.BaseActivity;
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -57,7 +55,7 @@ public class SafeBoxActivity extends BaseActivity {
     @Override
     protected void initView() {
         playMusic(6, volume);
-        imgTitle.setImageResource(R.drawable.ic_title_safe_box);
+        imgTitle.setImageResource(R.drawable.ic_safe_box_title);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_safe_contain, currentFragment).commit();
     }
 

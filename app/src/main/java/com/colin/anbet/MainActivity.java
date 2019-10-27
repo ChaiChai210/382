@@ -1,12 +1,12 @@
 package com.colin.anbet;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,6 +27,8 @@ import com.colin.anbet.activity.XimaActivity;
 import com.colin.anbet.adapter.CategoryGameAdapter;
 import com.colin.anbet.adapter.HotGameAdapter;
 import com.colin.anbet.adapter.RightGameAdapter;
+import com.colin.anbet.base.BaseActivity;
+import com.colin.anbet.base.BindEventBus;
 import com.colin.anbet.dialog.MessageDialog;
 import com.colin.anbet.dialog.SafeDialog;
 import com.colin.anbet.dialog.SafePwdDialog;
@@ -39,6 +41,7 @@ import com.colin.anbet.entity.MessageItem;
 import com.colin.anbet.event.LoginEvent;
 import com.colin.anbet.login.LoginDialog;
 import com.colin.anbet.login.RegisterDialog;
+import com.colin.anbet.net.BalanceBean;
 import com.colin.anbet.net.BaseResponseBean;
 import com.colin.anbet.net.CommonParser;
 import com.colin.anbet.net.LoginBean;
@@ -72,7 +75,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rxhttp.wrapper.param.RxHttp;
 import rxhttp.wrapper.utils.LogUtil;
@@ -176,7 +178,7 @@ public class MainActivity extends BaseActivity {
         playMusic(5, volume);
 //        showLoading();
         initLeftMenu();
-        submit();
+//        submit();
         getMessage();
 
     }
@@ -445,7 +447,6 @@ public class MainActivity extends BaseActivity {
 
                 }, throwable -> {
                     hideLoading();
-                    Log.e("chai", throwable.getMessage());
                 });
     }
 
@@ -533,7 +534,7 @@ public class MainActivity extends BaseActivity {
                 }
                 break;
             case R.id.img_fresh:
-                startActivity(new Intent(this, UserInfoActivity.class));
+                refreshBalance();
                 break;
             case R.id.img_website:
                 break;
@@ -567,12 +568,14 @@ public class MainActivity extends BaseActivity {
                     showFragment(new SafePwdDialog());
                 }
                 break;
+
             case R.id.btn_withdrawal:
                 if (isLogin) {
                     startActivity(new Intent(this, WithDrawActivity.class));
                 } else {
                     showFragment(LoginDialog.newInstance("", ""));
                 }
+
                 break;
             case R.id.btn_recharge:
 //                startActivity(new Intent(this, RechargeActivity.class));
@@ -588,6 +591,34 @@ public class MainActivity extends BaseActivity {
                 }
                 break;
         }
+    }
+
+    private void getBalance() {
+        RxHttp.get(Url.findMemberBalance)
+//                .add("dataStr", finalResult)
+                .asObject(BalanceBean.class)
+                .as(RxLife.asOnMain(this))//返回String类型
+                .subscribe(s -> {          //订阅观察者，
+                    //请求成功
+                    hideLoading();
+                    if (s.getStatus() == 1) {
+                       tvGoldenAccount.setText(s.getAvailableFration());
+                    } else {
+                        ToastUtil.getInstance().showToast(s.getMsg());
+                    }
+
+                }, throwable -> {
+                    hideLoading();
+                });
+    }
+    private void refreshBalance() {
+        Animation localAnimation = AnimationUtils.loadAnimation(this, R.anim.button_fresh_rotate);
+        localAnimation.setInterpolator(new LinearInterpolator());
+        imgFresh.clearAnimation();
+        imgFresh.startAnimation(localAnimation);
+        tvGoldenAccount.setText("刷新中...");
+        getBalance();
+
     }
 
 

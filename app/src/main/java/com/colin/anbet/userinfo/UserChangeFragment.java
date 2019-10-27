@@ -13,17 +13,15 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.colin.anbet.MyApp;
 import com.colin.anbet.R;
-import com.colin.anbet.adapter.BetTimeAdapter;
 import com.colin.anbet.adapter.UserChangeAdapter;
 import com.colin.anbet.entity.GameList;
-import com.colin.anbet.fragment.BaseFragment;
+import com.colin.anbet.base.BaseFragment;
 import com.colin.anbet.net.BaseResponseBean;
 import com.colin.anbet.net.CommonParser;
 import com.colin.anbet.net.MoneyBean;

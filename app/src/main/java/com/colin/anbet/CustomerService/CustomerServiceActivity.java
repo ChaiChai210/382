@@ -1,6 +1,5 @@
 package com.colin.anbet.CustomerService;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -8,19 +7,8 @@ import android.widget.RadioButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.colin.anbet.BaseActivity;
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
-import com.colin.anbet.entity.CustomerServiceList;
-import com.colin.anbet.net.BaseResponseBean;
-import com.colin.anbet.net.CommonParser;
-import com.colin.anbet.net.Url;
-import com.colin.anbet.util.ToastUtil;
-import com.google.gson.reflect.TypeToken;
-import com.rxjava.rxlife.RxLife;
-
-import java.util.List;
-
-import rxhttp.wrapper.param.RxHttp;
 
 public class CustomerServiceActivity
         extends BaseActivity

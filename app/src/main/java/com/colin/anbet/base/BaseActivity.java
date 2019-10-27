@@ -1,4 +1,4 @@
-package com.colin.anbet;
+package com.colin.anbet.base;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.colin.anbet.NetworkChangeReceiver;
+import com.colin.anbet.R;
 import com.colin.anbet.dialog.BaseDialogFragment;
 import com.colin.anbet.util.EventBusHelper;
 import com.colin.anbet.util.MediaPlayUtil;

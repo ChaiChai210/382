@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.FrameLayout;
 
-import com.colin.anbet.BaseActivity;
+import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
 import com.colin.anbet.X5WebView;
 import com.colin.anbet.dialog.BackDialog;

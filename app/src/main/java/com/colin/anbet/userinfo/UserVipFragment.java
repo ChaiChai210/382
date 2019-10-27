@@ -3,7 +3,7 @@ package com.colin.anbet.userinfo;
 
 import com.colin.anbet.R;
 import com.colin.anbet.X5WebView;
-import com.colin.anbet.fragment.BaseFragment;
+import com.colin.anbet.base.BaseFragment;
 import com.colin.anbet.util.UrlHelper;
 
 import butterknife.BindView;
