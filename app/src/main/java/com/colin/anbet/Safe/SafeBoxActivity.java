@@ -1,5 +1,9 @@
 package com.colin.anbet.Safe;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -10,8 +14,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.colin.anbet.MyApp;
 import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
+import com.colin.anbet.base.BindEventBus;
+import com.colin.anbet.event.LoginEvent;
+import com.colin.anbet.event.SafeEvent;
+import com.colin.anbet.util.Constants;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -27,6 +39,7 @@ import butterknife.OnClick;
  * @UpdateRemark: 更新说明
  * @Version: 1.0
  */
+@BindEventBus
 public class SafeBoxActivity extends BaseActivity {
     @BindView(R.id.img_back_bg)
     ImageView imgBackBg;
@@ -47,6 +60,26 @@ public class SafeBoxActivity extends BaseActivity {
     Fragment qcFragment = new SafeQCFragment();
     Fragment mxFragment = new SafeMXFragment();
 
+
+    private String safeMoney;
+    private String balance;
+
+    private boolean needRefresh = false;
+
+    public String getSafeMoney() {
+        return safeMoney;
+    }
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public static void gotoSafe(Context context, String memberSafeMoney) {
+        Intent intent = new Intent(context, SafeBoxActivity.class);
+        intent.putExtra(Constants.SAFE_MONEY, memberSafeMoney);
+        context.startActivity(intent);
+    }
+
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_safe_box;
@@ -54,11 +87,11 @@ public class SafeBoxActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        safeMoney = getIntent().getStringExtra(Constants.SAFE_MONEY);
         playMusic(6, volume);
         imgTitle.setImageResource(R.drawable.ic_safe_box_title);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_safe_contain, currentFragment).commit();
     }
-
 
 
     @OnClick({R.id.img_back_bg, R.id.btn_zhuanru, R.id.btn_quchu, R.id.btn_mingxi})
@@ -103,5 +136,18 @@ public class SafeBoxActivity extends BaseActivity {
                     .commit();
         }
         currentFragment = targetFragment;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSafeEvent(SafeEvent event) {
+        Log.e("chia", "ref");
+        needRefresh = true;
+        safeMoney = event.getSafeMoney();
+        balance = event.getBalance();
+        Log.e("chia", balance + "safe" + safeMoney);
+    }
+
+    public boolean isNeedRefresh() {
+        return needRefresh;
     }
 }

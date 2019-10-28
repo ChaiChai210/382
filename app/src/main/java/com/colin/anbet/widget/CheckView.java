@@ -27,7 +27,6 @@ public class CheckView extends View {
     public CheckView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CheckView);
         // 获取随机点的个数
         mPointNum = a.getInteger(R.styleable.CheckView_point_num, 0);
@@ -46,12 +45,9 @@ public class CheckView extends View {
         mTempPaint.setAntiAlias(true);
         mTempPaint.setTextSize(mTextSize);
         mTempPaint.setStrokeWidth(3);
-        setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCheckCode = makeCheckCode();
-                invalidate();
-            }
+        setOnClickListener(view -> {
+            mCheckCode = makeCheckCode();
+            invalidate();
         });
 //        Log.d("CheckView", "point_num = " + mPointNum);
 //        Log.d("CheckView", "line_num = " + mLineNum);

@@ -1,6 +1,7 @@
 package com.colin.anbet.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -86,11 +87,6 @@ public class ChessCardActivity
         recyclerView.setLayoutManager(gridLayoutManager);
     }
 
-    @Override
-    protected void initData() {
-        super.initData();
-
-    }
 
     private void getHot() {
         RxHttp.get(Url.kyGameList)

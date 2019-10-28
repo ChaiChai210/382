@@ -63,5 +63,7 @@ public class Url {
     //修改会员的登录密码
     public static final String updateLoginPwd = "phone/memberManager/updateLoginPwd";
     public static final String updateMember = "phone/memberManager/updateMember";
-
+    public static final String updateMemberSafeMoney = "phone/memberManager/updateMemberSafeMoney";
+    public static final String updateMemberSafePwd = "phone/memberManager/updateMemberSafePwd";
+    public static final String findMemberSafePwd = "phone/memberManager/findMemberSafePwd";
 }

@@ -20,7 +20,7 @@ public class MyPerformanceAdapter
     }
 
     protected void convert(BaseViewHolder vh, MyPerformanceBean.ResultBean item) {
-        LinearLayout localLinearLayout = (LinearLayout) vh.getView(R.id.ll_item);
+        LinearLayout localLinearLayout = vh.getView(R.id.ll_item);
         String str;
         if (vh.getLayoutPosition() % 2 == 1) {
             str = "#1d1c1e";

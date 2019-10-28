@@ -185,4 +185,6 @@
     <string name="yong_jing_yue">账号余额:</string>
     <string name="yong_jing_zonge">佣金总额</string>
     <string name="yu_e">余额</string>
+    <string name="safe_output">转出</string>
+    <string name="safe_box_output_money">转出金额</string>
 </resources>

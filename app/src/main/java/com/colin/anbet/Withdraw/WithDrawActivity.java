@@ -10,8 +10,8 @@ import android.widget.RadioGroup;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
+import com.colin.anbet.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

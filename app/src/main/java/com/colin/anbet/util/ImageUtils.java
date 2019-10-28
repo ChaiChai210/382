@@ -37,7 +37,7 @@ public class ImageUtils {
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(" bitmap: ");
-        localStringBuilder.append(paramString.toString());
+        localStringBuilder.append(paramString);
         Log.e("Bitmap", localStringBuilder.toString());
         return bitmap;
     }

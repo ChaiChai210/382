@@ -1,6 +1,7 @@
 package com.colin.anbet.dialog;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +10,27 @@ import android.widget.ImageView;
 
 import com.colin.anbet.R;
 import com.colin.anbet.Safe.SafeBoxActivity;
+import com.colin.anbet.entity.CategoryBean;
+import com.colin.anbet.net.BaseResponseBean;
+import com.colin.anbet.net.CommonParser;
+import com.colin.anbet.net.DepositBean;
+import com.colin.anbet.net.LoginBean;
+import com.colin.anbet.net.Url;
 import com.colin.anbet.util.IntentUtil;
 import com.colin.anbet.util.SPUtils;
 import com.colin.anbet.util.SoftKeyboardUtil;
 import com.colin.anbet.util.ToastUtil;
 import com.colin.anbet.util.UIHelper;
 import com.colin.anbet.util.Utils;
+import com.google.gson.reflect.TypeToken;
 import com.jungly.gridpasswordview.GridPasswordView;
 import com.jungly.gridpasswordview.imebugfixer.ImeDelBugFixedEditText;
+import com.rxjava.rxlife.RxLife;
 
 import java.lang.reflect.Field;
+import java.util.List;
+
+import rxhttp.wrapper.param.RxHttp;
 
 public class SafePwdDialog extends BaseDialogFragment {
 
@@ -55,21 +67,28 @@ public class SafePwdDialog extends BaseDialogFragment {
             if (passWord1.length() < 4) {
                 ToastUtil.getInstance().showToast("密码位数不足");
             }
-//            verifySafeBoxPassword();
-            if(SPUtils.getInstance().getSafeBoxPwd().equals(Utils.Md5(passWord1))) {
-//           UIHelper.okToast("验证通过");
-                dismiss();
-                IntentUtil.startActivity(mContext, SafeBoxActivity.class);
-            }else {
-                UIHelper.errorToastString("密码出错");
-                pswViewSet.clearPassword();
-            }
+            verifySafeBoxPassword(passWord1);
         });
         setObjByReflect(pswViewSet);
     }
 
-    private void verifySafeBoxPassword(String md5) {
+    private void verifySafeBoxPassword(String passWord1) {
+        RxHttp.get(Url.findMemberSafePwd)
+                .add("memberSafePwd", passWord1)
+               .asObject(DepositBean.class)
+                .as(RxLife.asOnMain(this))//返回String类型
+                .subscribe(s -> {          //订阅观察者，
+                    //请求成功
+                    Log.e("请求成功", s.toString());
+                    if (s.getStatus() == 1) {
+                        dismiss();
+                        SafeBoxActivity.gotoSafe(mContext,s.getMemberSafeMoney());
+                    } else {
+                        ToastUtil.getInstance().showToast(s.getMsg());
+                    }
 
+                }, throwable -> {
+                });
     }
 
     private void setObjByReflect(GridPasswordView paramGridPasswordView) {

@@ -87,7 +87,7 @@ public class GameAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Object localObject1 = (GameList) this.gameLists.get(position);
+        Object localObject1 = this.gameLists.get(position);
         if (holder instanceof LiveVideoViewHolder) {
 //            if (TextUtils.isEmpty(((GameList)localObject1).getIcon2()))
 //                paramViewHolder = ((GameList)localObject1).getConUrl();

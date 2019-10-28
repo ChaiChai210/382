@@ -1,7 +1,9 @@
 package com.colin.anbet.dialog;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -31,7 +33,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mUnbinder = ButterKnife.bind(this,view);
+        mUnbinder = ButterKnife.bind(this, view);
         init();
     }
 
@@ -68,4 +70,6 @@ public abstract class BaseDialogFragment extends DialogFragment {
         super.onDestroyView();
 
     }
+
+
 }

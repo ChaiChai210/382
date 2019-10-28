@@ -1,14 +1,19 @@
 package com.colin.anbet.dialog;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 
+import com.colin.anbet.MyApp;
 import com.colin.anbet.R;
 import com.colin.anbet.Safe.SafeBoxActivity;
+import com.colin.anbet.net.DepositBean;
+import com.colin.anbet.net.LoginBean;
+import com.colin.anbet.net.Url;
 import com.colin.anbet.util.IntentUtil;
 import com.colin.anbet.util.SPUtils;
 import com.colin.anbet.util.SoftKeyboardUtil;
@@ -17,8 +22,14 @@ import com.colin.anbet.util.UIHelper;
 import com.colin.anbet.util.Utils;
 import com.jungly.gridpasswordview.GridPasswordView;
 import com.jungly.gridpasswordview.imebugfixer.ImeDelBugFixedEditText;
+import com.rxjava.rxlife.RxLife;
 
 import java.lang.reflect.Field;
+
+import rxhttp.wrapper.param.RxHttp;
+import rxhttp.wrapper.utils.LogUtil;
+
+import static com.colin.anbet.util.Constants.LOGIN;
 
 public class SafeDialog extends BaseDialogFragment {
 
@@ -61,18 +72,40 @@ public class SafeDialog extends BaseDialogFragment {
             if (passWord1.length() < 4) {
                 ToastUtil.getInstance().showToast("密码位数不足");
             }
-            setSafeBoxPwd(Utils.Md5(passWord1));
+            setSafeBoxPwd(passWord1);
+
         });
         setObjByReflect(pswViewSet);
         setObjByReflect(pswViewConfirm);
     }
 
-    private void setSafeBoxPwd(String md5) {
-        SPUtils.getInstance().setSafeBoxPwd(md5);
-        UIHelper.okToast("设置密码成功");
-        SPUtils.getInstance().setFirstEnter(false);
-        dismiss();
-        IntentUtil.startActivity(mContext, SafeBoxActivity.class);
+    private void setSafeBoxPwd(String safeBoxPwd) {
+        LoginBean loginBean = SPUtils.getInstance().getObject(LOGIN, LoginBean.class);
+        String finalResult = Utils.getSafePwdBase64(loginBean.getMemberId(), safeBoxPwd);
+        LogUtil.setDebug(true);
+        //后台接口get与post请求都能用，然后base64请求后会被转码，故这样处理
+        RxHttp.get(Url.updateMemberSafePwd + "?dataStr=" + finalResult)
+//                .add("dataStr", finalResult)
+                .asObject(DepositBean.class)
+                .as(RxLife.asOnMain(this))//返回String类型
+                .subscribe(s -> {          //订阅观察者，
+                    //请求成功
+                    Log.e("请求成功", s.toString());
+                    if (s.getStatus() == 0) {
+                        ToastUtil.getInstance().showToast(s.getMsg());
+                    }else if(s.getStatus() == 1){
+                        SPUtils.getInstance().setFirstEnter(false);
+                        dismiss();
+                        mContext.showFragment(new SafePwdDialog());
+//                        IntentUtil.startActivity(mContext, SafeBoxActivity.class);
+                    }
+
+                }, throwable -> {
+                    Log.e("chai", throwable.getMessage());
+                });
+//        SPUtils.getInstance().setSafeBoxPwd(md5);
+//        UIHelper.okToast("设置密码成功");
+
     }
 
     private void setObjByReflect(GridPasswordView paramGridPasswordView) {

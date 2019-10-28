@@ -254,6 +254,7 @@ public class UserAccountFragment extends BaseFragment {
     @OnClick({R.id.tv_account_time, R.id.tv_account_type})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            //todo 用spinner做
             case R.id.tv_account_time:
                 getTimePopWindData(getTimes());
                 break;

@@ -183,9 +183,9 @@ public class WDBankFragment extends BaseFragment {
         }
         String paramWithdrawalRange;
         if (maxNum == 0) {
-            paramWithdrawalRange = String.format("请输入您的提现金额 单笔最低%1$s", new Object[]{Integer.valueOf(minNum)});
+            paramWithdrawalRange = String.format("请输入您的提现金额 单笔最低%1$s", Integer.valueOf(minNum));
         } else {
-            paramWithdrawalRange = String.format("请输入您的提现金额 单笔最低%1$s 最高%2$d", new Object[]{Integer.valueOf(minNum), Integer.valueOf(maxNum)});
+            paramWithdrawalRange = String.format("请输入您的提现金额 单笔最低%1$s 最高%2$d", Integer.valueOf(minNum), Integer.valueOf(maxNum));
         }
         Utils.setEditTextHintSize(this.edInputMoney, paramWithdrawalRange, 10);
     }

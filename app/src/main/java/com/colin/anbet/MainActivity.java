@@ -178,7 +178,7 @@ public class MainActivity extends BaseActivity {
         playMusic(5, volume);
 //        showLoading();
         initLeftMenu();
-//        submit();
+        submit();
         getMessage();
 
     }
@@ -600,17 +600,16 @@ public class MainActivity extends BaseActivity {
                 .as(RxLife.asOnMain(this))//返回String类型
                 .subscribe(s -> {          //订阅观察者，
                     //请求成功
-                    hideLoading();
                     if (s.getStatus() == 1) {
-                       tvGoldenAccount.setText(s.getAvailableFration());
+                        tvGoldenAccount.setText(s.getAvailableFration());
                     } else {
                         ToastUtil.getInstance().showToast(s.getMsg());
                     }
 
                 }, throwable -> {
-                    hideLoading();
                 });
     }
+
     private void refreshBalance() {
         Animation localAnimation = AnimationUtils.loadAnimation(this, R.anim.button_fresh_rotate);
         localAnimation.setInterpolator(new LinearInterpolator());

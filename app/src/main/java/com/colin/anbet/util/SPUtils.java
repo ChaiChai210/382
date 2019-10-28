@@ -177,7 +177,7 @@ public class SPUtils {
     public void init(Context paramContext) {
         this.context = paramContext;
         if (this.sp == null) {
-            this.sp = paramContext.getSharedPreferences("config", 0);
+            this.sp = paramContext.getSharedPreferences("config", Context.MODE_PRIVATE);
         }
         if (this.editor == null) {
             this.editor = this.sp.edit();

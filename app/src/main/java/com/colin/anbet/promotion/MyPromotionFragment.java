@@ -113,7 +113,7 @@ public class MyPromotionFragment extends Fragment implements View.OnClickListene
 
     private void initView(View view) {
         View loading = LayoutInflater.from(view.getContext()).inflate(R.layout.layout_loading, null);
-        this.loadingDialog = new LoadingDialog((Context) Objects.requireNonNull(getContext()), R.style.MobileDialog);
+        this.loadingDialog = new LoadingDialog(Objects.requireNonNull(getContext()), R.style.MobileDialog);
         this.loadingDialog.initDialog(loading);
 //        loadingDialog.showDialog();
         tv_myid = view.findViewById(R.id.tv_myid);

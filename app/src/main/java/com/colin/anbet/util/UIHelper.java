@@ -48,7 +48,7 @@ public class UIHelper {
         toast = Toast.makeText(MyApp.getContext(), paramString, Toast.LENGTH_SHORT);
         toast.setGravity(17, 0, 0);
         View localView = View.inflate(MyApp.getContext(), R.layout.toast_custom_view, null);
-        LinearLayout localLinearLayout = (LinearLayout) localView.findViewById(R.id.llToastView);
+        LinearLayout localLinearLayout = localView.findViewById(R.id.llToastView);
         if (paramString.length() <= 6) {
             RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams) localLinearLayout.getLayoutParams();
             localLayoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT;
@@ -142,7 +142,7 @@ public class UIHelper {
         toast = Toast.makeText(MyApp.getContext(), paramString, Toast.LENGTH_SHORT);
         toast.setGravity(17, 0, 0);
         View localView = View.inflate(MyApp.getContext(), R.layout.toast_custom_view, null);
-        LinearLayout localLinearLayout = (LinearLayout) localView.findViewById(R.id.llToastView);
+        LinearLayout localLinearLayout = localView.findViewById(R.id.llToastView);
         RelativeLayout.LayoutParams localLayoutParams;
         if (paramString.length() <= 6) {
             localLayoutParams = (RelativeLayout.LayoutParams) localLinearLayout.getLayoutParams();

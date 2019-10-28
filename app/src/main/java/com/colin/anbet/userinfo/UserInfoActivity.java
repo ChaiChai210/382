@@ -1,5 +1,6 @@
 package com.colin.anbet.userinfo;
 
+import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -75,7 +76,6 @@ public class UserInfoActivity
 
     @Override
     protected void initData() {
-        super.initData();
         menus.clear();
         menus.add(new UserMenuBean(0, true));
         menus.add(new UserMenuBean(1, false));

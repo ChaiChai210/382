@@ -19,4 +19,6 @@ public class Constants {
     public static final String LEVER = "key_lever";
     public static final String MESSAGE = "key_message";
 
+    public static final String SAFE_MONEY = "key_safe_money";
+
 }

@@ -368,5 +368,41 @@ public class Utils {
 //        String finalResult = Base64.getEncoder().encodeToString(result.getBytes());
         return Base64.encodeToString(result.getBytes(Charset.forName("UTF-8")), Base64.DEFAULT);
     }
+    public static String getSafeBase64(String memberId,String memberSafeMoney) {
+        JSONObject jo = new JSONObject();
+        //wangwu w12345678
+        try {
+            jo.put("memberId", memberId);
+            jo.put("memberSafeMoney", memberSafeMoney);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String result = "";
+        try {
+            result = URLEncoder.encode(jo.toString(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+//        String finalResult = Base64.getEncoder().encodeToString(result.getBytes());
+        return Base64.encodeToString(result.getBytes(Charset.forName("UTF-8")), Base64.DEFAULT);
+    }
+    public static String getSafePwdBase64(String memberId,String memberSafePwd) {
+        JSONObject jo = new JSONObject();
+        //wangwu w12345678
+        try {
+            jo.put("memberId", memberId);
+            jo.put("memberSafePwd", memberSafePwd);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String result = "";
+        try {
+            result = URLEncoder.encode(jo.toString(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+//        String finalResult = Base64.getEncoder().encodeToString(result.getBytes());
+        return Base64.encodeToString(result.getBytes(Charset.forName("UTF-8")), Base64.DEFAULT);
+    }
 }
 

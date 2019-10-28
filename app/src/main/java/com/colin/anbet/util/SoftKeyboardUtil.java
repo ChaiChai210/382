@@ -30,11 +30,7 @@ public class SoftKeyboardUtil {
         Rect localRect = new Rect();
         paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
         boolean bool;
-        if (i * 2 / 3 > localRect.bottom) {
-            bool = true;
-        } else {
-            bool = false;
-        }
+        bool = i * 2 / 3 > localRect.bottom;
         return bool;
     }
 
