@@ -16,6 +16,10 @@ import com.colin.anbet.util.SPUtils;
 import com.colin.anbet.util.SoundPoolUtil;
 import com.colin.anbet.util.ToastUtil;
 import com.tencent.smtt.sdk.QbSdk;
+import com.xuexiang.xupdate.XUpdate;
+import com.xuexiang.xupdate.entity.UpdateError;
+import com.xuexiang.xupdate.listener.OnUpdateFailureListener;
+import com.xuexiang.xupdate.utils.UpdateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +27,8 @@ import java.util.List;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import rxhttp.wrapper.param.RxHttp;
+
+import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION;
 
 public class MyApp extends Application {
     private static final String TAG = "MyAppcation";
@@ -114,6 +120,7 @@ public class MyApp extends Application {
 
             }
         });
+
     }
 
     private void leaveApp(Activity activity) {

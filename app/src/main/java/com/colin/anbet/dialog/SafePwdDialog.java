@@ -9,26 +9,16 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 
 import com.colin.anbet.R;
-import com.colin.anbet.Safe.SafeBoxActivity;
-import com.colin.anbet.entity.CategoryBean;
-import com.colin.anbet.net.BaseResponseBean;
-import com.colin.anbet.net.CommonParser;
+import com.colin.anbet.safe.SafeBoxActivity;
 import com.colin.anbet.net.DepositBean;
-import com.colin.anbet.net.LoginBean;
 import com.colin.anbet.net.Url;
-import com.colin.anbet.util.IntentUtil;
-import com.colin.anbet.util.SPUtils;
 import com.colin.anbet.util.SoftKeyboardUtil;
 import com.colin.anbet.util.ToastUtil;
-import com.colin.anbet.util.UIHelper;
-import com.colin.anbet.util.Utils;
-import com.google.gson.reflect.TypeToken;
 import com.jungly.gridpasswordview.GridPasswordView;
 import com.jungly.gridpasswordview.imebugfixer.ImeDelBugFixedEditText;
 import com.rxjava.rxlife.RxLife;
 
 import java.lang.reflect.Field;
-import java.util.List;
 
 import rxhttp.wrapper.param.RxHttp;
 

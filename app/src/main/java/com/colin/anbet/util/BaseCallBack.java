@@ -25,10 +25,3 @@ public abstract class BaseCallBack<T>
 
 
 
-/* Location:           E:\22\projects\383\ProjectSrc\smali\
-
- * Qualified Name:     com.game.app.utils.BaseCallBack
-
- * JD-Core Version:    0.7.0.1
-
- */

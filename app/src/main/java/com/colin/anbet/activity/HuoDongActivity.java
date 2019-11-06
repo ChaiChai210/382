@@ -2,6 +2,7 @@ package com.colin.anbet.activity;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -130,7 +131,6 @@ public class HuoDongActivity extends BaseActivity {
 
     public void hideProgress() {
     }
-
 
     @Override
     protected int getLayoutResId() {

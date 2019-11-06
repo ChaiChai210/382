@@ -8,17 +8,13 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 
-import com.colin.anbet.MyApp;
 import com.colin.anbet.R;
-import com.colin.anbet.Safe.SafeBoxActivity;
 import com.colin.anbet.net.DepositBean;
 import com.colin.anbet.net.LoginBean;
 import com.colin.anbet.net.Url;
-import com.colin.anbet.util.IntentUtil;
 import com.colin.anbet.util.SPUtils;
 import com.colin.anbet.util.SoftKeyboardUtil;
 import com.colin.anbet.util.ToastUtil;
-import com.colin.anbet.util.UIHelper;
 import com.colin.anbet.util.Utils;
 import com.jungly.gridpasswordview.GridPasswordView;
 import com.jungly.gridpasswordview.imebugfixer.ImeDelBugFixedEditText;

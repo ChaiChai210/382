@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 
 import com.colin.anbet.base.BaseActivity;
 import com.colin.anbet.R;
-import com.colin.anbet.X5WebView;
+import com.colin.anbet.widget.X5WebView;
 import com.colin.anbet.dialog.BackDialog;
 import com.colin.anbet.entity.GameBean;
 import com.colin.anbet.net.Url;

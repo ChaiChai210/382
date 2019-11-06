@@ -166,7 +166,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (mUnbinder != null) {
             mUnbinder.unbind();
         }
-//        EventBusHelper.unregister(this);
     }
 
     public void setStatusBarTextColor(Window window, boolean lightStatusBar) {

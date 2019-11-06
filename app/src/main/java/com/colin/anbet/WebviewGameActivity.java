@@ -12,6 +12,7 @@ import com.colin.anbet.util.MediaPlayUtil;
 import com.colin.anbet.util.UIHelper;
 import com.colin.anbet.util.Utils;
 import com.colin.anbet.widget.DragButton;
+import com.colin.anbet.widget.X5WebView;
 import com.rxjava.rxlife.RxLife;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;

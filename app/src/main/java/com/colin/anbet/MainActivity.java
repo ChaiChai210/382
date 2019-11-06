@@ -19,8 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.colin.anbet.CustomerService.CustomerServiceActivity;
-import com.colin.anbet.Withdraw.WithDrawActivity;
+import com.colin.anbet.customerService.CustomerServiceActivity;
+import com.colin.anbet.withdraw.WithDrawActivity;
 import com.colin.anbet.activity.ChessCardActivity;
 import com.colin.anbet.activity.HuoDongActivity;
 import com.colin.anbet.activity.XimaActivity;
@@ -141,7 +141,6 @@ public class MainActivity extends BaseActivity {
     ImageButton btnRecharge;
     @BindView(R.id.root)
     LinearLayout root;
-    private boolean accountBalance = false;
     private boolean isLogin = false;
     private LoginBean bean;
     private RecyclerView mLeftRecycler;
@@ -178,54 +177,9 @@ public class MainActivity extends BaseActivity {
         playMusic(5, volume);
 //        showLoading();
         initLeftMenu();
-        submit();
         getMessage();
 
     }
-
-    private void submit() {
-        JSONObject jo = new JSONObject();
-        //wangwu w12345678
-        try {
-            jo.put("memberPwd", "w12345678");
-            jo.put("memberName", "wangwu");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String result = "";
-        try {
-            result = URLEncoder.encode(jo.toString(), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-//        String finalResult = Base64.getEncoder().encodeToString(result.getBytes());
-        String finalResult = Base64.encodeToString(result.getBytes(Charset.forName("UTF-8")), Base64.DEFAULT);
-//        String finalResult = "JTdCJTIybWVtYmVyUHdkJTIyJTNBJTIydzEyMzQ1Njc4JTIyJTJDJTIybWVtYmVyTmFtZSUyMiUzQSUyMndhbmd3dSUyMiU3RA==";
-        Log.e("result1", result);
-        Log.e("result2", finalResult);
-        LogUtil.setDebug(true);
-        //后台接口get与post请求都能用，然后base64请求后会被转码，故这样处理
-        RxHttp.get("phone/memberManager/login" + "?dataStr=" + finalResult)
-//                .add("dataStr", finalResult)
-                .asObject(LoginBean.class)
-                .as(RxLife.asOnMain(this))//返回String类型
-                .subscribe(s -> {          //订阅观察者，
-                    //请求成功
-                    Log.e("请求成功", s.toString());
-                    if (s.getStatus() == 0) {
-                        ToastUtil.getInstance().showToast(s.getMsg());
-                    } else {
-                        SPUtils.getInstance().putObject(LOGIN, s);
-                        EventBusHelper.post(new LoginEvent(s));
-                    }
-
-                }, throwable -> {
-                    Log.e("chai", throwable.getMessage());
-                });
-        String url = RxHttp.postJson("phone/memberManager/login").add("dataStr", finalResult).getUrl();
-        Log.e("chai", url);
-    }
-
 
     private void initRightContent(int clickPos) {
         mRightRecycler = findViewById(R.id.recyclerViewContent);
